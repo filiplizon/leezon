@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Leezon Portfolio`,
-    description: `Example project for the Gatsby Head API`,
+    description: ``,
     image: `/icon.png`,
     siteUrl: `https://www.leezon.pl`,
   },
@@ -25,6 +25,29 @@ const config: GatsbyConfig = {
         crossOrigin: `use-credentials`,
       },
     },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [
+          `https://fonts.googleapis.com`,
+          `https://fonts.gstatic.com`,
+        ],
+        web: [
+          {
+            name: `Prompt`,
+            file: `https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap`,
+          },
+          {
+            name: `Karla`,
+            file: `https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap`,
+          },
+        ],
+      },
+    },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "@chakra-ui/gatsby-plugin",
   ],
 };
 
