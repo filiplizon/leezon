@@ -51,7 +51,7 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
   return (
     <>
       <Flex
-        py={isDesktop ? 0 : 150}
+        py={isDesktop ? 0 : 180}
         as={"nav"}
         top={0}
         left={0}
@@ -61,7 +61,7 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
         alignItems="center"
         justifyContent="space-between"
         flexDirection={isDesktop ? "row" : "column"}
-        background={isDesktop ? "transparent" : "dark"}
+        background={isDesktop ? "transparent" : "black"}
         zIndex={isDesktop ? 1 : -1}
         textTransform="uppercase"
         transform={

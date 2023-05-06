@@ -12,15 +12,21 @@ const Header = () => {
   return (
     <Box
       color="white"
-      bgColor="transparent"
-      p={5}
-      h="10vh"
+      bgColor="black"
+      borderBottom="1px solid white"
       position="fixed"
       top="0"
       width="100%"
       zIndex={1000}
+      px={5}
     >
-      <Flex justifyContent="space-between" maxWidth="1400px" mx="auto">
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        maxWidth="1400px"
+        mx="auto"
+        h="10vh"
+      >
         <Logo />
         <Navigation isMenuOpen={isMenuOpen} />
         <Flex

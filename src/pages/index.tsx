@@ -1,18 +1,15 @@
 import * as React from "react";
 import Layout from "../components/Layout/Layout";
-import { StaticImage } from "gatsby-plugin-image";
-import { ChakraProvider } from "@chakra-ui/react";
 
-import { Text } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme/theme";
+import Home from "../components/Home/Home";
 
 const IndexPage = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Layout pageTitle="Home Page">
-        <Text fontFamily="heading">
-          I'm making this by following the Gatsby Tutorial.
-        </Text>
+      <Layout>
+        <Home />
       </Layout>
     </ChakraProvider>
   );

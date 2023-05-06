@@ -17,10 +17,16 @@ const Links = () => {
   return (
     <Flex
       zIndex="1000"
-      position="absolute"
+      position="fixed"
       bottom={6}
-      _before={{ ...lineStyle, left: "-120%" }}
-      _after={{ ...lineStyle, right: "-120%" }}
+      left="50%"
+      transform="translateX(-50%)"
+      _before={{ ...lineStyle, left: "-80%" }}
+      _after={{ ...lineStyle, right: "-80%" }}
+      borderRadius={30}
+      bg="black"
+      color="white"
+      px={5}
     >
       <IconButton
         aria-label="github profile"
