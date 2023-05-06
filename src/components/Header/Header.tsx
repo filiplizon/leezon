@@ -1,44 +1,46 @@
 import * as React from "react";
-import { Flex, IconButton, Text, Box } from "@chakra-ui/react";
-import { Link } from "gatsby";
+import { Flex, IconButton, Box, useMediaQuery } from "@chakra-ui/react";
 import Logo from "../Logo/Logo";
-import { GoMail } from "react-icons/go";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { useState } from "react";
+import Navigation from "../Navigation/Navigation";
+import Menu from "../Menu/Menu";
 
 const Header = () => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isDesktop] = useMediaQuery("(min-width: 900px)");
   return (
-    <Box color="white" bgColor="dark" p={5} borderBottom="1px solid white">
-      <Flex justifyContent="space-between" maxWidth="1300px" mx="auto">
+    <Box
+      color="white"
+      bgColor="transparent"
+      p={5}
+      h="10vh"
+      position="fixed"
+      top="0"
+      width="100%"
+      zIndex={1000}
+    >
+      <Flex justifyContent="space-between" maxWidth="1400px" mx="auto">
         <Logo />
-        <IconButton
-          aria-label="expand menu"
-          icon={<HiOutlineMenuAlt3 />}
-          fontSize="30"
-          sx={{
-            "@media (min-width: 1100px)": {
-              display: "none",
-            },
-          }}
-        />
-        <Box
-          sx={{
-            "@media (max-width: 1100px)": {
-              display: "none",
-            },
-          }}
+        <Navigation isMenuOpen={isMenuOpen} />
+        <Flex
+          alignItems="center"
+          justifyContent={isDesktop ? "space-between" : "flex-end"}
+          flexDirection={isDesktop ? "row-reverse" : "row"}
         >
-          <Link to="/contact">
-            <Flex alignItems="center">
-              <IconButton
-                aria-label="get in touch"
-                icon={<GoMail />}
-                mr={1}
-                fontSize="25"
-              />
-              <Text fontFamily="secondary">GET IN TOUCH</Text>
-            </Flex>
-          </Link>
-        </Box>
+          <Menu />
+          <IconButton
+            display={isDesktop ? "none" : "block"}
+            ml={2}
+            aria-label="expand menu"
+            icon={<HiOutlineMenuAlt3 />}
+            fontSize="30"
+            onClick={() => {
+              setMenuOpen(!isMenuOpen);
+            }}
+            transform={isMenuOpen ? "rotateZ(0deg)" : "rotateZ(180deg)"}
+          />
+        </Flex>
       </Flex>
     </Box>
   );
