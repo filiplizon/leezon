@@ -4,12 +4,14 @@ import Layout from "../components/Layout/Layout";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme/theme";
 import Home from "../components/Home/Home";
+import About from "../components/About/About";
 
 const IndexPage = () => {
   return (
     <ChakraProvider theme={theme}>
       <Layout>
         <Home />
+        <About />
       </Layout>
     </ChakraProvider>
   );
