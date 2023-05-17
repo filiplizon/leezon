@@ -18,7 +18,7 @@ const About = () => {
       flexDirection={isDesktop ? "row" : "column"}
       alignItems="center"
       justifyContent="center"
-      bgColor="black"
+      bgColor="dark"
       overflowX="hidden"
       position="relative"
       px={5}

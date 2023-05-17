@@ -24,7 +24,7 @@ const Links = () => {
       _before={{ ...lineStyle, left: "-80%" }}
       _after={{ ...lineStyle, right: "-80%" }}
       borderRadius={30}
-      bg="black"
+      bg="dark"
       color="white"
       px={5}
     >

@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <Box
       color="white"
-      bgColor="black"
+      bgColor="dark"
       borderBottom="1px solid white"
       position="fixed"
       top="0"

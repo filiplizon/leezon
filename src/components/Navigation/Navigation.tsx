@@ -61,7 +61,7 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
         alignItems="center"
         justifyContent="space-between"
         flexDirection={isDesktop ? "row" : "column"}
-        background={isDesktop ? "transparent" : "black"}
+        background={isDesktop ? "transparent" : "dark"}
         zIndex={isDesktop ? 1 : -1}
         textTransform="uppercase"
         transform={

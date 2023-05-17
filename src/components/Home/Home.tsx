@@ -24,7 +24,7 @@ const Home = () => {
       alignItems="center"
       justifyContent="center"
       textTransform="uppercase"
-      bgColor="black"
+      bgColor="dark"
       overflow={isDesktop ? "unset" : "hidden"}
     >
       <Box h={150} w={150} mb={5} mt={10} position="relative">
