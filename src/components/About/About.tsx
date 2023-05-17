@@ -13,7 +13,7 @@ const About = () => {
     <Flex
       id="about"
       color="white"
-      height={isDesktop ? "100vh" : "90vh"}
+      minH={isDesktop ? "100vh" : "90vh"}
       top={isDesktop ? 0 : "10vh"}
       flexDirection={isDesktop ? "row" : "column"}
       alignItems="center"
@@ -22,7 +22,7 @@ const About = () => {
       overflowX="hidden"
       position="relative"
       px={5}
-      pt={5}
+      pt={10}
       pb={isDesktop ? 0 : 20}
     >
       <Flex
@@ -37,6 +37,7 @@ const About = () => {
           borderRadius="8%"
           width={isDesktop ? "320px" : "200px"}
           zIndex={2}
+          shadow="lg"
         />
         <Flex direction="column" ml={isDesktop ? 20 : 0} mt={10}>
           <Heading level="h3">About me</Heading>

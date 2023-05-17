@@ -10,7 +10,7 @@ const DottedSquare = () => {
       w="200px"
       h="200px"
       position={isDesktop ? "relative" : "absolute"}
-      top={isDesktop ? "-160px" : "-20px"}
+      top={isDesktop ? "-160px" : "-25px"}
       left="0"
       bg="transparent"
       zIndex={1}
