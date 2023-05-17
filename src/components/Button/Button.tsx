@@ -19,6 +19,9 @@ const Button = ({ children }: ButtonProps) => {
       letterSpacing={1}
       color="white"
       border="1px solid gray"
+      textTransform="uppercase"
+      fontWeight={400}
+      shadow="base"
       _hover={{
         borderColor: "white",
       }}
