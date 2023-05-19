@@ -22,13 +22,13 @@ const About = () => {
       overflowX="hidden"
       position="relative"
       px={5}
-      pt={10}
-      pb={isDesktop ? 0 : 20}
+      pt="14vh"
+      pb={isDesktop ? 0 : 24}
     >
       <Flex
         maxWidth="1100px"
         direction={isDesktop ? "row" : "column"}
-        alignItems={isDesktop ? "self-end" : "center"}
+        alignItems="center"
         justifyContent="space-between"
       >
         <Image
@@ -60,7 +60,13 @@ const About = () => {
           </Flex>
         </Flex>
       </Flex>
-      <DottedSquare />
+      <DottedSquare
+        position={isDesktop ? "relative" : "absolute"}
+        top={isDesktop ? "-160px" : "-25px"}
+        left="0"
+        width="200px"
+        height="200px"
+      />
     </Flex>
   );
 };

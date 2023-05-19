@@ -5,6 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../theme/theme";
 import Home from "../components/Home/Home";
 import About from "../components/About/About";
+import Experience from "../components/Experience/Experience";
 
 const IndexPage = () => {
   return (
@@ -12,6 +13,7 @@ const IndexPage = () => {
       <Layout>
         <Home />
         <About />
+        <Experience />
       </Layout>
     </ChakraProvider>
   );

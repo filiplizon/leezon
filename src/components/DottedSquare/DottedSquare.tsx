@@ -1,17 +1,33 @@
 import * as React from "react";
 import { Box } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
+interface DottedSquareProps {
+  position?: "absolute" | "relative";
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  width?: string;
+  height?: string;
+}
 
-const DottedSquare = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
-
+const DottedSquare = ({
+  position = "absolute",
+  top,
+  left,
+  right,
+  bottom,
+  width,
+  height,
+}: DottedSquareProps) => {
   return (
     <Box
-      w="200px"
-      h="200px"
-      position={isDesktop ? "relative" : "absolute"}
-      top={isDesktop ? "-160px" : "-25px"}
-      left="0"
+      w={width}
+      h={height}
+      position={position}
+      top={top}
+      left={left}
+      right={right}
+      bottom={bottom}
       bg="transparent"
       zIndex={1}
       _before={{

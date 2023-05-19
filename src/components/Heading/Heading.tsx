@@ -7,8 +7,9 @@ interface HeadingProps {
   letterSpacing?: number;
   fontFamily?: string;
   color?: string;
-  fontSize?: number;
+  fontSize?: number | string;
   fontWeight?: number;
+  mb?: number;
 }
 
 const Heading = ({
@@ -19,6 +20,7 @@ const Heading = ({
   color = "white",
   fontSize,
   fontWeight,
+  mb,
 }: HeadingProps) => {
   return (
     <ChakraHeading
@@ -28,6 +30,7 @@ const Heading = ({
       color={color}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      mb={mb}
     >
       {children}
     </ChakraHeading>
