@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
@@ -17,7 +17,7 @@ const Experience = () => {
       id="experience"
       mt="12vh"
       pt="14vh"
-      pb={24}
+      pb={isDesktop ? "10vh" : 0}
       position="relative"
     >
       <Heading level="h3">Work Experience</Heading>

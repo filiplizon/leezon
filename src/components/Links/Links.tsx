@@ -21,13 +21,12 @@ const Links = () => {
       bottom={6}
       left="50%"
       transform="translateX(-50%)"
-      // _before={{ ...lineStyle, left: "-80%" }}
-      // _after={{ ...lineStyle, right: "-80%" }}
       borderRadius={30}
       bg="dark"
       color="white"
       px={5}
       shadow="md"
+      border="1px solid gray"
     >
       <IconButton
         aria-label="github profile"

@@ -13,7 +13,7 @@ const Header = () => {
     <Box
       color="white"
       bgColor="dark"
-      borderBottom="1px solid white"
+      borderBottom="1px solid gray"
       position="fixed"
       top="0"
       width="100%"
