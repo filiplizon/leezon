@@ -4,6 +4,7 @@ import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import { technologies } from "../../utils/data/technologies";
 import SkillCard from "../SkillCard/SkillCard";
+import PaginationBar from "../PaginationBar/PaginationBar";
 
 interface Technology {
   name: string;
@@ -42,6 +43,8 @@ const Skills: React.FC = () => {
       id="skills"
       color="white"
       pb={isDesktop ? 10 : 0}
+      pt={isDesktop ? "10vh" : 0}
+      minH="100vh"
       mb={isDesktop ? 0 : 24}
       justifyContent="center"
       position="relative"
@@ -49,6 +52,7 @@ const Skills: React.FC = () => {
         content: '""',
         position: "absolute",
         left: 0,
+        top: 0,
         height: "100%",
         width: "50%",
         background: "lightdark",
@@ -122,23 +126,12 @@ const Skills: React.FC = () => {
               />
             ))}
 
-          <Flex>
-            {Array.from({ length: totalPages }, (_, i: number) => (
-              <Box
-                key={i}
-                as="button"
-                borderRadius="full"
-                bg={i + 1 === currentPage ? "white" : "transparent"}
-                border={i + 1 === currentPage ? "none" : "1px solid white"}
-                width={isDesktop ? "10px" : "20px"}
-                height={isDesktop ? "10px" : "20px"}
-                mt="10px"
-                mx="5px"
-                onClick={() => handlePageClick(i + 1)}
-                cursor="pointer"
-              />
-            ))}
-          </Flex>
+          <PaginationBar
+            totalPages={totalPages}
+            currentPage={currentPage}
+            isDesktop={isDesktop}
+            handlePageClick={handlePageClick}
+          />
         </Flex>
       </Flex>
     </Flex>

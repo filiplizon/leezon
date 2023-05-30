@@ -56,7 +56,7 @@ const About = () => {
             doloremque ut
           </Text>
           <Flex justifyContent={isDesktop ? "unset" : "center"}>
-            <Button>Download resume</Button>
+            <Button width={isDesktop ? "40%" : "100%"}>Download resume</Button>
           </Flex>
         </Flex>
       </Flex>
