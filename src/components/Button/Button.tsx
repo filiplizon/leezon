@@ -9,6 +9,7 @@ interface ButtonProps {
   isLink?: boolean;
   href?: string;
   py?: number;
+  type?: "submit";
 }
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   isLink,
   href,
   py = 5,
+  type,
 }: ButtonProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
 
@@ -25,6 +27,7 @@ const Button = ({
 
   return (
     <ButtonComponent
+      type={type}
       href={href}
       textAlign="center"
       borderRadius={30}

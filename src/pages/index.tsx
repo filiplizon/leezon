@@ -8,6 +8,7 @@ import About from "../components/About/About";
 import Experience from "../components/Experience/Experience";
 import Skills from "../components/Skills/Skills";
 import Projects from "../components/Projects/Projects";
+import Contact from "../components/Contact/Contact";
 
 const IndexPage = () => {
   return (
@@ -18,6 +19,7 @@ const IndexPage = () => {
         <Experience />
         <Skills />
         <Projects />
+        <Contact />
       </Layout>
     </ChakraProvider>
   );
