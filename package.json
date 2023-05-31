@@ -20,6 +20,7 @@
     "@chakra-ui/react": "^2.6.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "formik": "^2.4.0",
     "framer-motion": "^10.12.4",
     "gatsby": "^5.9.0",
     "gatsby-omni-font-loader": "^2.0.2",
@@ -30,7 +31,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.13",
