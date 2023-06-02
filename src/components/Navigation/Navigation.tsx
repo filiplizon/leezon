@@ -1,11 +1,13 @@
 import * as React from "react";
 import { Link, useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
 import { ReactNode, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
+  const { t } = useTranslation();
   const Links = [
-    "home",
-    "about",
+    t("navigation.home"),
+    t("navigation.about"),
     "experience",
     "skills",
     "projects",
