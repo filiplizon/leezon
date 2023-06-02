@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text, useColorMode } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import portraitImage from "../../images/portrait.jpg";
 import DottedSquare from "../DottedSquare/DottedSquare";
@@ -8,21 +8,21 @@ import Button from "../Button/Button";
 
 const About = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const { colorMode } = useColorMode();
 
   return (
     <Flex
       id="about"
-      color="white"
-      minH={isDesktop ? "100vh" : "90vh"}
-      top={isDesktop ? 0 : "10vh"}
+      color={`mode.${colorMode}.text`}
+      minH={isDesktop ? "100vh" : "100vh"}
       flexDirection={isDesktop ? "row" : "column"}
       alignItems="center"
       justifyContent="center"
-      bgColor="dark"
+      bgColor={`mode.${colorMode}.background`}
       overflowX="hidden"
       position="relative"
       px={5}
-      pt="14vh"
+      pt="12vh"
       pb={isDesktop ? 0 : 24}
     >
       <Flex
@@ -39,8 +39,15 @@ const About = () => {
           zIndex={2}
           shadow="lg"
         />
-        <Flex direction="column" ml={isDesktop ? 20 : 0} mt={10}>
-          <Heading level="h3">About me</Heading>
+        <Flex
+          direction="column"
+          color={`mode.${colorMode}.text`}
+          ml={isDesktop ? 20 : 0}
+          mt={10}
+        >
+          <Heading color={`mode.${colorMode}.text`} level="h3">
+            About me
+          </Heading>
           <Text
             fontSize="sm"
             my={5}

@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Box, Flex, Image, Text, useMediaQuery } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  useColorMode,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
 import { Project } from "../../utils/types/project";
@@ -12,14 +19,15 @@ const ProjectCard: React.FC<Project> = ({
   width,
 }) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const { colorMode } = useColorMode();
   const buttonWidth = "48%";
 
   return (
     <Flex
       flexDirection="column"
-      bg="lightdark"
+      bg={`mode.${colorMode}.background`}
       pb={5}
-      color="white"
+      color={`mode.${colorMode}.text`}
       fontFamily="secondary"
       borderRadius={10}
       w={isDesktop ? width || "30%" : "90%"}
@@ -29,12 +37,19 @@ const ProjectCard: React.FC<Project> = ({
       mb={isDesktop ? 0 : 10}
       shadow="md"
     >
-      <Image mb={5} borderTopRadius={10} height="50%" src={image} />
+      <Image
+        mb={5}
+        borderBottom="1px solid"
+        borderBottomColor={`mode.${colorMode}.gray`}
+        borderTopRadius={10}
+        height="50%"
+        src={image}
+      />
       <Box px={5}>
         <Heading level="h4" fontSize="xl" mb={2}>
           {title}
         </Heading>
-        <Text my={2} color="lightgray" fontSize={14}>
+        <Text my={2} color={`mode.${colorMode}.gray`} fontSize={14}>
           {technologies}
         </Text>
         <Text fontFamily="secondary" fontSize={14}>

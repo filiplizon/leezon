@@ -17,7 +17,7 @@ const Heading = ({
   level,
   letterSpacing,
   fontFamily = "primary",
-  color = "white",
+  color,
   fontSize,
   fontWeight,
   mb,

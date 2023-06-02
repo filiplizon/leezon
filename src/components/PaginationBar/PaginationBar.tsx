@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorMode } from "@chakra-ui/react";
 
 interface PaginationBarProps {
   totalPages: number;
@@ -14,6 +14,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   isDesktop,
   handlePageClick,
 }) => {
+  const { colorMode } = useColorMode();
   return (
     <Flex>
       {Array.from({ length: totalPages }, (_, i: number) => (
@@ -21,8 +22,11 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
           key={i}
           as="button"
           borderRadius="full"
-          bg={i + 1 === currentPage ? "white" : "transparent"}
-          border={i + 1 === currentPage ? "none" : "1px solid white"}
+          bg={i + 1 === currentPage ? `mode.${colorMode}.text` : "transparent"}
+          border={i + 1 === currentPage ? "none" : "1px solid"}
+          borderColor={
+            i + 1 === currentPage ? "none" : `mode.${colorMode}.text`
+          }
           width={isDesktop ? "10px" : "20px"}
           height={isDesktop ? "10px" : "20px"}
           mt="10px"

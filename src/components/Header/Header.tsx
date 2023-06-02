@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Flex, IconButton, Box, useMediaQuery } from "@chakra-ui/react";
+import {
+  Flex,
+  IconButton,
+  Box,
+  useMediaQuery,
+  useColorMode,
+} from "@chakra-ui/react";
 import Logo from "../Logo/Logo";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { useState } from "react";
@@ -9,11 +15,12 @@ import Menu from "../Menu/Menu";
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const { colorMode } = useColorMode();
   return (
     <Box
-      color="white"
-      bgColor="dark"
-      borderBottom="1px solid gray"
+      bgColor={`mode.${colorMode}.background`}
+      borderBottom="1px solid"
+      borderBottomColor={`mode.${colorMode}.gray`}
       position="fixed"
       top="0"
       width="100%"
@@ -44,6 +51,7 @@ const Header = () => {
             onClick={() => {
               setMenuOpen(!isMenuOpen);
             }}
+            bg="transparent"
             transform={isMenuOpen ? "rotateZ(0deg)" : "rotateZ(180deg)"}
           />
         </Flex>

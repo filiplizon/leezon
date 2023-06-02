@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Box } from "@chakra-ui/react";
+import theme from "../../theme/theme";
 interface DottedSquareProps {
   position?: "absolute" | "relative";
   top?: string;
@@ -19,6 +20,8 @@ const DottedSquare = ({
   width,
   height,
 }: DottedSquareProps) => {
+  const dotColor = theme.colors.mode.dark.gray;
+
   return (
     <Box
       w={width}
@@ -35,7 +38,7 @@ const DottedSquare = ({
         position: "absolute",
         height: "100%",
         width: "100%",
-        background: "radial-gradient(lightgray 15%, transparent 15%)",
+        background: `radial-gradient(${dotColor} 15%, transparent 15%)`,
         backgroundSize: "20px 20px",
         opacity: "0.3",
       }}

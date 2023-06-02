@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useColorMode } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import { projects } from "../../utils/data/projects";
@@ -11,6 +11,7 @@ import { Project } from "../../utils/types/project";
 
 const Projects: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const { colorMode } = useColorMode();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showMore, setShowMore] = useState<boolean>(false);
 
@@ -36,10 +37,9 @@ const Projects: React.FC = () => {
 
   return (
     <Flex
-      minH="100vh"
       flexDirection="column"
       alignItems="center"
-      bg="dark"
+      bg={`mode.${colorMode}.secondary`}
       id="projects"
       pt="14vh"
       pb="12vh"
@@ -51,7 +51,9 @@ const Projects: React.FC = () => {
         top="10px"
         right="0"
       />
-      <Heading level="h3">Projects</Heading>
+      <Heading color={`mode.${colorMode}.text`} level="h3">
+        Projects
+      </Heading>
       <Flex
         flexDirection={isDesktop ? "row" : "column"}
         justifyContent="space-around"

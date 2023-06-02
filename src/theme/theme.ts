@@ -1,16 +1,36 @@
 import { extendTheme } from "@chakra-ui/react";
-const theme = {
-  colors: {
-    dark: "#1F1F1F",
-    lightdark: "#262626",
-    gray: "#868786",
-    lightgray: "#898989",
-    white: "#FFFFFF",
-  },
-  fonts: {
-    primary: `'Prompt', sans-serif`,
-    secondary: `'Karla', sans-serif`,
+
+const colors = {
+  mode: {
+    dark: {
+      background: "#1F1F1F",
+      secondary: "#2F2F2F",
+      gray: "#868786",
+      text: "#FFFFFF",
+    },
+    light: {
+      background: "#fafafa",
+      secondary: "#EEEEEE",
+      gray: "#AEAEAE",
+      text: "#1F1F1F",
+    },
   },
 };
 
-export default extendTheme(theme); // or extendBaseTheme
+const fonts = {
+  primary: `'Prompt', sans-serif`,
+  secondary: `'Karla', sans-serif`,
+};
+
+const config = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+};
+
+const theme = extendTheme({
+  colors,
+  fonts,
+  config,
+});
+
+export default theme;

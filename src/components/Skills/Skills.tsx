@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import { technologies } from "../../utils/data/technologies";
@@ -14,6 +14,7 @@ interface Technology {
 
 const Skills: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const { colorMode } = useColorMode();
   const [activeTechnology, setActiveTechnology] = useState<Technology>(
     technologies[0]
   );
@@ -39,13 +40,12 @@ const Skills: React.FC = () => {
 
   return (
     <Flex
-      bg="dark"
+      bg={`mode.${colorMode}.secondary`}
       id="skills"
-      color="white"
+      color={`mode.${colorMode}.text`}
       pb={isDesktop ? 10 : 0}
       pt={isDesktop ? "10vh" : 0}
-      minH="100vh"
-      mb={isDesktop ? 0 : 24}
+      // mb={isDesktop ? 0 : 24}
       justifyContent="center"
       position="relative"
       _before={{
@@ -54,8 +54,8 @@ const Skills: React.FC = () => {
         left: 0,
         top: 0,
         height: "100%",
-        width: "50%",
-        background: "lightdark",
+        width: isDesktop ? "50%" : "0",
+        background: `mode.${colorMode}.background`,
         zIndex: 1,
       }}
     >
@@ -67,19 +67,19 @@ const Skills: React.FC = () => {
         <Flex
           flexDirection="column"
           justifyContent="center"
-          bg="lightdark"
           pt={isDesktop ? 0 : "14vh"}
           px={5}
           pb={isDesktop ? 0 : 5}
           textAlign={isDesktop ? "left" : "center"}
           width={isDesktop ? "48%" : "100%"}
           position="relative"
+          bg={isDesktop ? "transparent" : `mode.${colorMode}.background`}
         >
           <DottedSquare
             width="200px"
-            height="200px"
+            height="160px"
             left="-50%"
-            top={isDesktop ? "0" : "-40px"}
+            top={isDesktop ? "0" : "-0px"}
           />
           <Heading level="h3" mb={isDesktop ? 5 : 10}>
             Skills
@@ -92,7 +92,8 @@ const Skills: React.FC = () => {
           >
             <Text
               display="inline"
-              borderBottom="1px solid white"
+              borderBottom="1px solid"
+              borderBottomColor={`mode.${colorMode}.text`}
               fontSize="xl"
               mb={5}
             >
@@ -104,14 +105,13 @@ const Skills: React.FC = () => {
           </Flex>
         </Flex>
         <Flex
-          bg="dark"
           mt={isDesktop ? 0 : 10}
           width={isDesktop ? "50%" : "100%"}
           px={2}
           pt={isDesktop ? 0 : 5}
           justifyContent="space-around"
           flexWrap="wrap"
-          ml={isDesktop ? 10 : 0}
+          ml={isDesktop ? 20 : 0}
           position="relative"
           marginTop={isDesktop ? 10 : 0}
         >

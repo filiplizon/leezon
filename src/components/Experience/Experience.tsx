@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, useColorMode } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import { experienceData } from "../../utils/data/experience";
@@ -7,23 +7,25 @@ import ExperienceCard from "../ExperienceCard/ExperienceCard";
 
 const Experience = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
-
+  const { colorMode } = useColorMode();
   return (
     <Flex
       minH="100vh"
       flexDirection="column"
       alignItems="center"
-      bg="lightdark"
+      bg={`mode.${colorMode}.secondary`}
       id="experience"
-      mt="12vh"
       pt="14vh"
       pb={isDesktop ? "10vh" : 0}
       position="relative"
     >
-      <Heading level="h3">Work Experience</Heading>
+      <Heading color={`mode.${colorMode}.text`} level="h3">
+        Work Experience
+      </Heading>
       <Flex
         flexDirection={isDesktop ? "row" : "column"}
         justifyContent="space-around"
+        alignItems="center"
         my={10}
         maxWidth="1100px"
       >
@@ -31,7 +33,7 @@ const Experience = () => {
           <ExperienceCard key={data.title} {...data} />
         ))}
       </Flex>
-      <Heading level="h3" mb={10}>
+      <Heading color={`mode.${colorMode}.text`} level="h3" mb={10}>
         Education
       </Heading>
       <ExperienceCard

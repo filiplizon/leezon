@@ -4,6 +4,7 @@ import {
   ListItem,
   Text,
   UnorderedList,
+  useColorMode,
   useMediaQuery,
 } from "@chakra-ui/react";
 import DottedSquare from "../DottedSquare/DottedSquare";
@@ -25,20 +26,22 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   width,
 }) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const { colorMode } = useColorMode();
 
   return (
     <Flex
       flexDirection="column"
-      bg="dark"
+      bg={`mode.${colorMode}.background`}
       p={5}
-      color="white"
+      color={`mode.${colorMode}.text`}
       fontFamily="secondary"
       shadow="xl"
       borderRadius={10}
-      w={isDesktop ? width || "48%" : "100%"}
+      w={isDesktop ? width || "48%" : "90%"}
       zIndex="5"
       position="relative"
       pr={10}
+      mb={isDesktop ? 0 : 10}
     >
       <Heading level="h4" fontSize="xl" mb={2}>
         {title}

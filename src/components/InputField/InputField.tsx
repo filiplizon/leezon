@@ -5,6 +5,7 @@ import {
   Input,
   FormErrorMessage,
   Textarea,
+  useColorMode,
 } from "@chakra-ui/react";
 import { Field } from "formik";
 
@@ -21,6 +22,7 @@ const InputField: React.FC<InputFieldProps> = ({
   placeholder,
   isMessage,
 }) => {
+  const { colorMode } = useColorMode();
   const InputComponent = isMessage ? Textarea : Input;
   return (
     <Field name={name}>
@@ -29,17 +31,17 @@ const InputField: React.FC<InputFieldProps> = ({
           <FormLabel htmlFor={name}>{label}</FormLabel>
           <InputComponent
             {...field}
-            borderColor="gray"
+            borderColor={`mode.${colorMode}.gray`}
             _focus={{
-              borderColor: "white",
+              borderColor: `mode.${colorMode}.text`,
               shadow: "none",
             }}
-            _hover={{ borderColor: "white" }}
-            _placeholder={{ color: "gray" }}
+            _hover={{ borderColor: `mode.${colorMode}.text` }}
+            _placeholder={{ color: `mode.${colorMode}.gray` }}
             sx={{
               "&:-webkit-autofill": {
                 transition: "background-color 5000s ease-in-out 0s",
-                WebkitTextFillColor: "white !important",
+                WebkitTextFillColor: `mode.${colorMode}.text !important`,
               },
             }}
             id={name}

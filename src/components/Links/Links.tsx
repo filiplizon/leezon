@@ -1,18 +1,9 @@
 import * as React from "react";
-import { Flex, IconButton } from "@chakra-ui/react";
+import { Flex, IconButton, useColorMode } from "@chakra-ui/react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 
 const Links = () => {
-  const lineStyle = {
-    content: `""`,
-    position: "absolute",
-    width: "100px",
-    height: "2px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    bg: "white",
-    zIndex: "0",
-  };
+  const { colorMode } = useColorMode();
 
   return (
     <Flex
@@ -22,16 +13,18 @@ const Links = () => {
       left="50%"
       transform="translateX(-50%)"
       borderRadius={30}
-      bg="dark"
-      color="white"
+      bgColor={`mode.${colorMode}.background`}
+      color={`mode.${colorMode}.text`}
       px={5}
       shadow="md"
-      border="1px solid gray"
+      border="1px solid"
+      borderColor={`mode.${colorMode}.gray`}
     >
       <IconButton
         aria-label="github profile"
         icon={<AiFillGithub />}
         mr={1}
+        bg="transparent"
         fontSize="30"
         _hover={{
           transform: "translateY(-10%)",
@@ -41,6 +34,7 @@ const Links = () => {
         aria-label="linkedin profile"
         icon={<AiFillLinkedin />}
         mr={1}
+        bg="transparent"
         fontSize="30"
         _hover={{
           transform: "translateY(-10%)",

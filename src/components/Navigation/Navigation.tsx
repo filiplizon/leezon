@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useMediaQuery, Flex } from "@chakra-ui/react";
+import { Link, useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
 import { ReactNode, useState } from "react";
 
 const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
@@ -13,6 +13,7 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
   ];
   const [isActive, setActive] = useState("home");
   const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const { colorMode } = useColorMode();
 
   const handleLinkClick = (link: string) => {
     setActive(link);
@@ -34,13 +35,15 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
       fontFamily="secondary"
       fontSize={isDesktop ? 14 : 22}
       letterSpacing={2}
-      color={isActive === href.slice(1) ? "white" : "gray"}
+      color={`mode.${colorMode}.text`}
       border="1px solid transparent"
-      borderColor={isActive === href.slice(1) ? "white" : "transparent"}
+      borderColor={
+        isActive === href.slice(1) ? `mode.${colorMode}.text` : "transparent"
+      }
       _hover={{
         textDecoration: "none",
-        color: "white",
-        borderColor: "white",
+        color: `mode.${colorMode}.text`,
+        borderColor: `mode.${colorMode}.text`,
       }}
       onClick={() => handleLinkClick(href.slice(1))}
     >
@@ -61,7 +64,7 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
         alignItems="center"
         justifyContent="space-between"
         flexDirection={isDesktop ? "row" : "column"}
-        background={isDesktop ? "transparent" : "dark"}
+        background={isDesktop ? "transparent" : `mode.${colorMode}.background`}
         zIndex={isDesktop ? 1 : -1}
         textTransform="uppercase"
         transform={

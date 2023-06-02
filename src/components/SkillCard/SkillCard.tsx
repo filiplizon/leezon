@@ -1,5 +1,11 @@
 import React from "react";
-import { Flex, Text, Image, useMediaQuery } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Image,
+  useMediaQuery,
+  useColorMode,
+} from "@chakra-ui/react";
 
 interface Technology {
   name: string;
@@ -17,7 +23,10 @@ const SkillCard = ({
   onClick: () => void;
 }) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
-  const activeStyle = isActive ? "lightdark" : "dark";
+  const { colorMode } = useColorMode();
+  const activeStyle = isActive
+    ? `mode.${colorMode}.background`
+    : `mode.${colorMode}.secondary`;
   const grayscaleStyle = isActive ? "0%" : "100%";
 
   return (
@@ -32,11 +41,11 @@ const SkillCard = ({
       borderRadius={10}
       filter={`grayscale(${grayscaleStyle})`}
       _hover={{
-        bg: "lightdark",
+        bg: `mode.${colorMode}.background`,
         filter: "grayscale(0%)",
-        color: "white",
+        color: `mode.${colorMode}.text`,
       }}
-      color={isActive ? "white" : "gray"}
+      color={isActive ? `mode.${colorMode}.text` : `mode.${colorMode}.gray`}
       cursor="pointer"
       shadow="lg"
       onClick={onClick}

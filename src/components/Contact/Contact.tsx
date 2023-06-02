@@ -1,17 +1,21 @@
 import React from "react";
-import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import ContactForm from "../Form/Form";
 
 const Contact: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
-
+  const { colorMode } = useColorMode();
   return (
     <Flex
-      bg="dark"
+      bg={
+        isDesktop
+          ? `mode.${colorMode}.secondary`
+          : `mode.${colorMode}.background`
+      }
       id="contact"
-      color="white"
+      color={`mode.${colorMode}.text`}
       minH="90vh"
       pb={isDesktop ? 10 : "10vh"}
       pt="12vh"
@@ -25,7 +29,7 @@ const Contact: React.FC = () => {
         top: 0,
         height: "100%",
         width: isDesktop ? "50%" : 0,
-        background: "lightdark",
+        background: `mode.${colorMode}.background`,
       }}
     >
       <Flex flexDirection={isDesktop ? "row" : "column"} maxW="1100px">

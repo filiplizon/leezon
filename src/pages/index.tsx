@@ -1,7 +1,6 @@
 import * as React from "react";
 import Layout from "../components/Layout/Layout";
-
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "../theme/theme";
 import Home from "../components/Home/Home";
 import About from "../components/About/About";
@@ -13,6 +12,7 @@ import Contact from "../components/Contact/Contact";
 const IndexPage = () => {
   return (
     <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Layout>
         <Home />
         <About />

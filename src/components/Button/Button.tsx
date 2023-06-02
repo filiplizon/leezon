@@ -1,5 +1,9 @@
 import * as React from "react";
-import { Button as ChakraButton, Link as ChakraLink } from "@chakra-ui/react";
+import {
+  Button as ChakraButton,
+  Link as ChakraLink,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 
 interface ButtonProps {
@@ -22,6 +26,7 @@ const Button = ({
   type,
 }: ButtonProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const { colorMode } = useColorMode();
 
   const ButtonComponent = isLink ? ChakraLink : ChakraButton;
 
@@ -36,13 +41,15 @@ const Button = ({
       fontFamily="secondary"
       fontSize={isDesktop ? 14 : 18}
       letterSpacing={1}
-      color="white"
-      border="1px solid gray"
+      color={`mode.${colorMode}.text`}
+      bg="transparent"
+      border="1px solid"
+      borderColor={`mode.${colorMode}.gray`}
       textTransform="uppercase"
       fontWeight={400}
       shadow="base"
       _hover={{
-        borderColor: "white",
+        borderColor: `mode.${colorMode}.text`,
       }}
       onClick={onClick}
     >
