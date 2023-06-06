@@ -31,6 +31,7 @@ const Heading = ({
       fontSize={fontSize}
       fontWeight={fontWeight}
       mb={mb}
+      zIndex={2}
     >
       {children}
     </ChakraHeading>

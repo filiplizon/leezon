@@ -6,6 +6,7 @@ import {
   useMediaQuery,
   useColorMode,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 interface Technology {
   name: string;
@@ -24,31 +25,31 @@ const SkillCard = ({
 }) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
   const { colorMode } = useColorMode();
-  const activeStyle = isActive
-    ? `mode.${colorMode}.background`
-    : `mode.${colorMode}.secondary`;
-  const grayscaleStyle = isActive ? "0%" : "100%";
+  const { t } = useTranslation();
 
   return (
     <Flex
+      as="a"
+      href={`#${t("navigation.skills.link")}`}
       width={isDesktop ? "30%" : "45%"}
       mb={8}
       textAlign="center"
       p={2}
       flexDirection="column"
       alignItems="center"
-      bg={activeStyle}
+      bg={`mode.${colorMode}.background`}
       borderRadius={10}
-      filter={`grayscale(${grayscaleStyle})`}
-      _hover={{
-        bg: `mode.${colorMode}.background`,
-        filter: "grayscale(0%)",
-        color: `mode.${colorMode}.text`,
-      }}
+      border="1px solid transparent"
+      borderColor={isActive ? `mode.${colorMode}.text` : "transparent"}
       color={isActive ? `mode.${colorMode}.text` : `mode.${colorMode}.gray`}
       cursor="pointer"
-      shadow="lg"
+      shadow={isActive ? "lg" : "none"}
       onClick={onClick}
+      _hover={{
+        color: `mode.${colorMode}.text`,
+        borderColor: `mode.${colorMode}.text`,
+        shadow: "lg",
+      }}
     >
       <Image
         src={technology.image}

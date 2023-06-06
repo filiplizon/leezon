@@ -1,82 +1,49 @@
-import * as React from "react";
-import { Link, useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
-import { ReactNode, useState } from "react";
+import React, { useState } from "react";
+import { useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import NavLink from "../NavLink/NavLink";
+import { getLinks } from "../../utils/data/navigation";
 
 const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
   const { t } = useTranslation();
-  const Links = [
-    t("navigation.home"),
-    t("navigation.about"),
-    "experience",
-    "skills",
-    "projects",
-    "contact",
-  ];
-  const [isActive, setActive] = useState("home");
+  const links = getLinks(t);
+  const [activeLink, setActiveLink] = useState("home".slice(1));
   const [isDesktop] = useMediaQuery("(min-width: 900px)");
   const { colorMode } = useColorMode();
 
   const handleLinkClick = (link: string) => {
-    setActive(link);
+    setActiveLink(link);
   };
-
-  type NavLinkProps = {
-    children: ReactNode;
-    href: string;
-  };
-
-  const NavLink = ({ children, href }: NavLinkProps) => (
-    <Link
-      href={href}
-      position="relative"
-      px={isDesktop ? 4 : 8}
-      py={isDesktop ? 1 : 2}
-      mr={2}
-      borderRadius={30}
-      fontFamily="secondary"
-      fontSize={isDesktop ? 14 : 22}
-      letterSpacing={2}
-      color={`mode.${colorMode}.text`}
-      border="1px solid transparent"
-      borderColor={
-        isActive === href.slice(1) ? `mode.${colorMode}.text` : "transparent"
-      }
-      _hover={{
-        textDecoration: "none",
-        color: `mode.${colorMode}.text`,
-        borderColor: `mode.${colorMode}.text`,
-      }}
-      onClick={() => handleLinkClick(href.slice(1))}
-    >
-      {children}
-    </Link>
-  );
 
   return (
     <>
       <Flex
-        py={isDesktop ? 0 : 180}
-        as={"nav"}
-        top={0}
+        pb={isDesktop ? 0 : 150}
+        pt={isDesktop ? 0 : 110}
+        as="nav"
+        top={isDesktop ? 0 : "10.1vh"}
         left={0}
         position={isDesktop ? "relative" : "absolute"}
-        height={isDesktop ? "unset" : "100vh"}
+        height={isDesktop ? "unset" : "90vh"}
         width={isDesktop ? "unset" : "100%"}
         alignItems="center"
         justifyContent="space-between"
         flexDirection={isDesktop ? "row" : "column"}
         background={isDesktop ? "transparent" : `mode.${colorMode}.background`}
-        zIndex={isDesktop ? 1 : -1}
         textTransform="uppercase"
         transform={
           isMenuOpen || isDesktop ? "translateX(0)" : "translateX(100%)"
         }
         transition="transform .5s ease-in-out"
       >
-        {Links.map(link => (
-          <NavLink href={`#${link}`} key={link}>
-            {link}
+        {links.map(({ name, link }) => (
+          <NavLink
+            key={link}
+            href={`#${link}`}
+            isActive={activeLink === link.slice(1)}
+            onClick={() => handleLinkClick(link.slice(1))}
+          >
+            {name}
           </NavLink>
         ))}
       </Flex>

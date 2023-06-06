@@ -1,39 +1,46 @@
-export const experienceData = {
-  work: [
-    {
-      title: "Junior Frontend Developer",
-      company: "Chimera Prime",
-      date: "12.2022 - 04.2023",
-      description: [
-        "Projektowanie, implementacja i testowanie kodu w oparciu o wymagania biznesowe i techniczne aplikacji wspomagającej proces rekrutacji",
-        "Tworzenie responsywnych interfejsów użytkownika przy użyciu TypeScript / React / Chakra UI",
-        "Integracja interfejsu użytkownika z API z wykorzystaniem standardowych protokołów sieciowych (Rest API)",
-        "Rozwiązywanie problemów i debugowanie kodu, a także optymalizacja wydajności aplikacji",
-      ],
-    },
-    {
-      title: "Frontend Developer",
-      company: "NEONET",
-      date: "06.2021 - 11.2022",
-      description: [
-        "Przygotowywanie landing page'y w Magento 2",
-        "Tworzenie responywnych landing page'y (HTML, CSS, JavaScript) na podstawie projektów graficznych stworzonych w Adobe XD, Adobe PS lub Figmie",
-        "Rozwój i testowanie funkcjonalności sklepu internetowego",
-        "Rozwiązywanie problemów w działaniu aplikacji i proponowanie nowych rozwiązań",
-        "Tworzenie mailingów w HTML",
-      ],
-    },
-  ],
-  education: {
-    title: "WYŻSZA SZKOŁA INFORMATYKI I ZARZĄDZANIA 'COPERNICUS'",
-    company: "Bachelor of engineering, Computer Science",
-    date: "10.2017 - 03.2022",
-    description: [
-      "Przygotowywanie landing page'y w Magento 2",
-      "Tworzenie responywnych landing page'y (HTML, CSS, JavaScript) na podstawie projektów graficznych stworzonych w Adobe XD, Adobe PS lub Figmie",
-      "Rozwój i testowanie funkcjonalności sklepu internetowego",
-      "Rozwiązywanie problemów w działaniu aplikacji i proponowanie nowych rozwiązań",
-      "Tworzenie mailingów w HTML",
+export const getExperience = (t: any) => {
+  return {
+    work: [
+      {
+        title: t("experience.workExperience.chimeraPrime.position"),
+        company: t("experience.workExperience.chimeraPrime.company"),
+        date: t("experience.workExperience.chimeraPrime.date"),
+        description: [
+          t("experience.workExperience.chimeraPrime.responsibilities.1"),
+          t("experience.workExperience.chimeraPrime.responsibilities.2"),
+          t("experience.workExperience.chimeraPrime.responsibilities.3"),
+          t("experience.workExperience.chimeraPrime.responsibilities.4"),
+        ],
+      },
+      {
+        title: t("experience.workExperience.neonet.position"),
+        company: t("experience.workExperience.neonet.company"),
+        date: t("experience.workExperience.neonet.date"),
+        description: [
+          t("experience.workExperience.neonet.responsibilities.1"),
+          t("experience.workExperience.neonet.responsibilities.2"),
+          t("experience.workExperience.neonet.responsibilities.3"),
+          t("experience.workExperience.neonet.responsibilities.4"),
+          t("experience.workExperience.neonet.responsibilities.5"),
+        ],
+      },
     ],
-  },
+    education: {
+      title: t("experience.education.school"),
+      company: t("experience.education.degree"),
+      date: t("experience.education.date"),
+      description: [
+        t("experience.education.responsibilities.1"),
+        t("experience.education.responsibilities.2"),
+        t("experience.education.responsibilities.3"),
+        t("experience.education.responsibilities.4"),
+        t("experience.education.responsibilities.5"),
+        t("experience.education.responsibilities.6"),
+        t("experience.education.responsibilities.7"),
+        t("experience.education.responsibilities.8"),
+        t("experience.education.responsibilities.9"),
+        t("experience.education.responsibilities.10"),
+      ],
+    },
+  };
 };

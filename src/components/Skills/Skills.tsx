@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from "react";
-import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import React, { useState, useMemo, useEffect } from "react";
+import { Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
-import { technologies } from "../../utils/data/technologies";
+import { getTechnologies } from "../../utils/data/technologies";
 import SkillCard from "../SkillCard/SkillCard";
 import PaginationBar from "../PaginationBar/PaginationBar";
+import { useTranslation } from "react-i18next";
 
 interface Technology {
   name: string;
@@ -15,6 +16,8 @@ interface Technology {
 const Skills: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
   const { colorMode } = useColorMode();
+  const { t } = useTranslation();
+  const technologies = getTechnologies(t);
   const [activeTechnology, setActiveTechnology] = useState<Technology>(
     technologies[0]
   );
@@ -23,12 +26,18 @@ const Skills: React.FC = () => {
   const indexOfLastTechnology: number = currentPage * technologiesPerPage;
   const indexOfFirstTechnology: number =
     indexOfLastTechnology - technologiesPerPage;
-  const { name, description } = activeTechnology;
 
   const totalPages: number = useMemo(
     () => Math.ceil(technologies.length / technologiesPerPage),
     [technologies.length, technologiesPerPage]
   );
+
+  useEffect(() => {
+    const updatedActiveTechnology = technologies.find(
+      technology => technology.name === activeTechnology.name
+    );
+    setActiveTechnology(updatedActiveTechnology || technologies[0]);
+  }, [t]);
 
   const handlePageClick = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
@@ -40,12 +49,11 @@ const Skills: React.FC = () => {
 
   return (
     <Flex
+      id={t("skills.id") as string}
       bg={`mode.${colorMode}.secondary`}
-      id="skills"
       color={`mode.${colorMode}.text`}
       pb={isDesktop ? 10 : 0}
-      pt={isDesktop ? "10vh" : 0}
-      // mb={isDesktop ? 0 : 24}
+      pt={isDesktop ? "11vh" : 0}
       justifyContent="center"
       position="relative"
       _before={{
@@ -63,13 +71,14 @@ const Skills: React.FC = () => {
         flexDirection={isDesktop ? "row" : "column"}
         maxW="1100px"
         zIndex={2}
+        pb={10}
       >
         <Flex
           flexDirection="column"
           justifyContent="center"
           pt={isDesktop ? 0 : "14vh"}
           px={5}
-          pb={isDesktop ? 0 : 5}
+          pb={isDesktop ? 10 : 5}
           textAlign={isDesktop ? "left" : "center"}
           width={isDesktop ? "48%" : "100%"}
           position="relative"
@@ -82,7 +91,7 @@ const Skills: React.FC = () => {
             top={isDesktop ? "0" : "-0px"}
           />
           <Heading level="h3" mb={isDesktop ? 5 : 10}>
-            Skills
+            {t("skills.heading")}
           </Heading>
           <Flex
             flexDirection="column"
@@ -97,10 +106,10 @@ const Skills: React.FC = () => {
               fontSize="xl"
               mb={5}
             >
-              {name}
+              {activeTechnology.name}
             </Text>
-            <Text fontSize="md" h="150px">
-              {description}
+            <Text fontSize="md" height={isDesktop ? "120px" : "unset"}>
+              {activeTechnology.description}
             </Text>
           </Flex>
         </Flex>
@@ -121,7 +130,7 @@ const Skills: React.FC = () => {
               <SkillCard
                 key={index}
                 technology={technology}
-                isActive={activeTechnology === technology}
+                isActive={activeTechnology.name === technology.name}
                 onClick={() => handleTechnologyClick(technology)}
               />
             ))}

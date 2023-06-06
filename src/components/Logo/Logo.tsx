@@ -1,9 +1,11 @@
 import * as React from "react";
-import { Box, useColorMode } from "@chakra-ui/react";
 import { Link } from "gatsby";
+import { Box, useColorMode } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 
 const Logo = () => {
   const { colorMode } = useColorMode();
+  const { t } = useTranslation();
   return (
     <Box
       color={`mode.${colorMode}.text`}
@@ -11,7 +13,7 @@ const Logo = () => {
       fontSize="30"
       fontFamily="secondary"
     >
-      <Link to="/">Leezon</Link>
+      <Link to="/">{t("logo")}</Link>
     </Box>
   );
 };

@@ -1,12 +1,20 @@
 import * as React from "react";
-import { Flex, Box, Image, useColorMode } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Image,
+  useColorMode,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
   const sizes = isDesktop ? [500, 700, 900, 1100] : [250, 350, 450, 550];
   const { colorMode } = useColorMode();
+  const { t } = useTranslation();
+
   const circleStyle = {
     position: "absolute",
     top: "50%",
@@ -17,6 +25,7 @@ const Home = () => {
     borderRadius: "50%",
     zIndex: "1",
   };
+
   return (
     <Flex
       id="home"
@@ -27,7 +36,7 @@ const Home = () => {
       textTransform="uppercase"
       bgColor={`mode.${colorMode}.background`}
       overflow={isDesktop ? "unset" : "hidden"}
-      mt={10}
+      mt={isDesktop ? 5 : 10}
     >
       <Box h={150} w={150} mb={5} mt={10} position="relative">
         {sizes.map((size, index) => (
@@ -37,7 +46,7 @@ const Home = () => {
               ...circleStyle,
               width: `${size}px`,
               height: `${size}px`,
-              opacity: `${0.3 + index * 0.1}`,
+              opacity: `${0.5 + index * 0.1}`,
             }}
           ></Box>
         ))}
@@ -58,7 +67,7 @@ const Home = () => {
         letterSpacing={isDesktop ? 6 : 4}
         fontWeight={400}
       >
-        Frontend Developer
+        {t("home.position")}
       </Heading>
       <Heading
         level="h1"
@@ -66,7 +75,7 @@ const Home = () => {
         fontSize={isDesktop ? 55 : 50}
         color={`mode.${colorMode}.text`}
       >
-        Filip Lizoń
+        {t("home.name")}
       </Heading>
     </Flex>
   );

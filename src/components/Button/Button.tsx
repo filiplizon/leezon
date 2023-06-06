@@ -13,6 +13,7 @@ interface ButtonProps {
   isLink?: boolean;
   href?: string;
   py?: number;
+  mt?: number;
   type?: "submit";
 }
 
@@ -23,6 +24,7 @@ const Button = ({
   isLink,
   href,
   py = 5,
+  mt,
   type,
 }: ButtonProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
@@ -48,6 +50,7 @@ const Button = ({
       textTransform="uppercase"
       fontWeight={400}
       shadow="base"
+      mt={mt}
       _hover={{
         borderColor: `mode.${colorMode}.text`,
       }}

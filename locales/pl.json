@@ -1,7 +1,281 @@
 {
     "changeLanguageButton": "EN",
+    "logo": "Leezon",
+    "home": {
+        "name": "Filip Lizoń",
+        "position": "Frontend Developer"
+    },
     "navigation": {
-        "home": "home",
-        "about": "o mnie"
+        "home": {
+            "label": "home",
+            "link": "home"
+        },
+        "about": {
+            "label": "o mnie",
+            "link": "o-mnie"
+        },
+        "experience": {
+            "label": "doświadczenie",
+            "link": "doswiadczenie"
+        },
+        "skills": {
+            "label": "umiejętności",
+            "link": "umiejetnosci"
+        },
+        "projects": {
+            "label": "projekty",
+            "link": "projekty"
+        },
+        "contact": {
+            "label": "kontakt",
+            "link": "kontakt"
+        }
+    },
+    "about": {
+        "id": "o-mnie",
+        "heading": "O mnie",
+        "text": "Jestem 25-letnim inżynierem informatyki z prawie dwuletnim doświadczeniem jako Frontend Developer. Moja przygoda z programowaniem rozpoczęła się na początku studiów, a od tego czasu cały czas poszerzam swoje umiejętności i śledzę najnowsze trendy w branży. Czerpię ogromną satysfakcję z tworzenia responsywnych stron oraz aplikacji internetowych. Cechuje mnie ambitność i konsekwentność, szybko się uczę i zawsze chętnie poznaję nowe technologie. Jestem kreatywnym i skrupulatnym profesjonalistą, który uwielbia podejmować nowe wyzwania. Stawiam na czysty i czytelny kod, dbając jednocześnie o modularność i skalowalność. Świetnie radzę sobie zarówno w pracy zespołowej, jak i w indywidualnych projektach.",
+        "button": "pobierz CV"
+    },
+    "experience": {
+        "id": "doswiadczenie",
+        "workExperience": {
+            "heading": "Doświadczenie zawodowe",
+            "chimeraPrime": {
+                "position": "Junior Frontend Developer",
+                "company": "Chimera Prime",
+                "date": "12.2022 - 04.2023",
+                "responsibilities": {
+                    "1": "Projektowanie, implementacja i testowanie kodu w oparciu o wymagania biznesowe i techniczne aplikacji wspomagającej proces rekrutacji",
+                    "2": "Tworzenie responsywnych interfejsów użytkownika przy użyciu TypeScript / React / Chakra UI",
+                    "3": "Integracja interfejsu użytkownika z API z wykorzystaniem standardowych protokołów sieciowych (Rest API)",
+                    "4": "Rozwiązywanie problemów i debugowanie kodu, a także optymalizacja wydajności aplikacji"
+                }
+            },
+            "neonet": {
+                "position": "Frontend Developer",
+                "company": "NEONET",
+                "date": "06.2021 - 11.2022",
+                "responsibilities": {
+                    "1": "Przygotowywanie landing page'y w Magento 2",
+                    "2": "Tworzenie responsywnych landing page'y (HTML, CSS, JavaScript) na podstawie projektów graficznych stworzonych w Adobe XD, Adobe PS lub Figmie",
+                    "3": "Rozwój i testowanie funkcjonalności sklepu internetowego",
+                    "4": "Rozwiązywanie problemów w działaniu aplikacji i proponowanie nowych rozwiązań",
+                    "5": "Tworzenie mailingów w HTML"
+                }
+            }
+        },
+        "education": {
+            "heading": "Edukacja",
+            "school": "WYŻSZA SZKOŁA INFORMATYKI I ZARZĄDZANIA 'COPERNICUS'",
+            "degree": "Inżynier, Informatyka",
+            "date": "10.2017 - 03.2022",
+            "responsibilities": {
+                "1": "Programowanie (Java, C++, C#, Javascript)",
+                "2": "Bazy danych (SQL)",
+                "3": "Projektowanie oprogramowania",
+                "4": "Grafika komputerowa",
+                "5": "Testowanie",
+                "6": "Algorytmy i struktury danych",
+                "7": "Sieci komputerowe",
+                "8": "Systemy operacyjne",
+                "9": "Sztuczna inteligencja i uczenie maszynowe",
+                "10": "Bezpieczeństwo informatyczne"
+            }
+        }
+    },
+    "skills": {
+        "id": "umiejetnosci",
+        "heading": "Umiejętności",
+        "javascript": {
+            "name": "JavaScript",
+            "description": "Posiadam solidną znajomość tego języka programowania i umiem tworzyć efektywne i interaktywne strony internetowe. Znam najważniejsze koncepcje i techniki programowania w JavaScript, takie jak manipulacja DOM, obsługa zdarzeń, programowanie asynchroniczne i tworzenie interfejsów użytkownika. Moje umiejętności w JavaScript pozwalają mi tworzyć wydajny i czytelny kod, który jest łatwy w utrzymaniu i rozszerzaniu. Mam zdolność rozwiązywania problemów i dostosowywania się do zmieniających się wymagań projektu."
+        },
+        "typescript": {
+            "name": "TypeScript",
+            "description": "Posiadam dobrą znajomość tego statycznego języka programowania. Dzięki TypeScriptowi mogę pisać bardziej bezpieczny i niezawodny kod, zapewniając silne typowanie, obsługę interfejsów i możliwość definiowania własnych typów. Znam zalety TypeScriptu, takie jak wykrywanie błędów na etapie kompilacji, lepszą dokumentację kodu i ułatwione refaktoryzacje. Moje umiejętności w TypeScript pozwalają mi tworzyć skalowalne i łatwe w utrzymaniu aplikacje, minimalizując błędy i przyspieszając proces programowania."
+        },
+        "react": {
+            "name": "React",
+            "description": "Jestem doświadczonym programistą React, który pasjonuje się tworzeniem interaktywnych i responsywnych interfejsów użytkownika. Posiadam solidną wiedzę na temat tworzenia komponentów, zarządzania stanem, hooków oraz tworzenia dynamicznych efektów i animacji, a także optymalizacji wydajności. Moje umiejętności obejmują również integrację z zewnętrznymi bibliotekami, obsługę routingu, oraz komunikację z serwerem przy użyciu bibliotek takich jak Axios."
+        },
+        "next": {
+            "name": "Next.js",
+            "description": "Znam podstawowe koncepcje i funkcje dostępne w Next.js, takie jak routing, pre-rendering, obsługa danych po stronie serwera i klienta, oraz generowanie statycznych stron. Potrafię tworzyć podstawowe komponenty i struktury projektu w Next.js, a także korzystać z popularnych funkcji, takich jak Server-Side Rendering (SSR) i Static Site Generation (SSG) "
+        },
+        "gatsby": {
+            "name": "Gatsby.js",
+            "description": "Znam podstawowe koncepcje i funkcje dostępne w Gatsby.js, takie jak generowanie statycznych stron, obsługa danych ze źródeł zewnętrznych, zarządzanie routingiem oraz tworzenie reużywalnych komponentów. Potrafię tworzyć podstawowe strony internetowe przy użyciu Gatsby.js i korzystać z jego pluginów do rozszerzania funkcjonalności."
+        },
+        "redux": {
+            "name": "Redux",
+            "description": "Mam doświadczenie w pracy z Redux i potrafię efektywnie korzystać z niego w projektach. Znam koncepcje i terminologię związane z Redux, takie jak akcje, reduktory, store oraz state. Potrafię tworzyć akcje i reduktory, które umożliwiają manipulację i aktualizację stanu aplikacji. Nie sprawia mi problemu korzystanie z narzędzi deweloperskich Redux DevTools, które ułatwiają debugowanie i monitorowanie stanu aplikacji Redux."
+        },
+        "recoil": {
+            "name": "Recoil",
+            "description": "Posiadam podstawową wiedzę na temat Recoil. Recoil to biblioteka do zarządzania stanem w aplikacjach React. Znam podstawowe koncepcje i terminologię związane z Recoil, takie jak Atomy, Selektory, Zasoby i Mutacje. Potrafię tworzyć i zarządzać atomami, które przechowują stan aplikacji, oraz tworzyć selektory, które pozwalają na odczyt i subskrypcję stanu."
+        },
+        "css": {
+            "name": "CSS",
+            "description": "Posiadam zaawansowaną znajomość CSS i rozumiem wszystkie podstawowe koncepty. Tworzę responsywne i elastyczne układy na podstawie projektów graficznych. Potrafię tworzyć zaawansowane efekty wizualne, takie jak animacje, przejścia, cienie i gradienty. Dostosowuję stylowanie do różnych przeglądarek i urządzeń, dbając o spójny wygląd na wszystkich platformach. Znam techniki optymalizacji i organizacji stylów, takie jak modułowość i konwencje nazewnicze. Moje interfejsy użytkownika są estetyczne, nowoczesne i zgodne z najlepszymi praktykami i standardami CSS."
+        },
+        "html": {
+            "name": "HTML",
+            "description": "Posiadam zaawansowaną znajomość HTML i doskonale znam wszystkie podstawowe elementy i struktury HTML. Potrafię tworzyć semantyczny i dobrze zorganizowany kod HTML, wykorzystując odpowiednie znaczniki i atrybuty. Tworzę czytelne i dostępne strony internetowe, dbając o hierarchię nagłówków, znaczniki sekcji, listy, linki i formularze. Znam również zaawansowane techniki, takie jak osadzanie multimediów, tworzenie tabel i formularzy, a także integrację z zewnętrznymi bibliotekami i skryptami."
+        },
+        "sass": {
+            "name": "Sass",
+            "description": "Znam składnię Sass/Scss oraz potrafię tworzyć zagnieżdżone selektory, zmienne, funkcje i miksiny. Wykorzystując Sass/Scss, jestem w stanie pisać bardziej modułowy i efektywny kod CSS, który łatwo można utrzymywać i rozszerzać. Potrafię organizować style w modularne pliki, co ułatwia zarządzanie dużymi projektami."
+        },
+        "tailwind": {
+            "name": "Tailwind CSS",
+            "description": "Posiadam umiejętności w zakresie korzystania z Tailwind CSS, nowoczesnego i elastycznego frameworka CSS. Wykorzystując Tailwind CSS, mogę tworzyć stylizację stron internetowych w sposób szybki i efektywny. Znam klasyczne klasy utility, które Tailwind CSS oferuje, takie jak wyrównywanie, marginesy, paddingi, kolory i wiele innych. Dzięki temu mogę tworzyć responsywne układy i dostosowywać wygląd stron do różnych urządzeń."
+        },
+        "chakraUI": {
+            "name": "Chakra UI",
+            "description": "Posiadam doświadczenie w korzystaniu z Chakra UI. Znam i rozumiem podstawowe komponenty i style oferowane przez Chakra UI. Potrafię skutecznie korzystać z komponentów Chakra UI w celu tworzenia estetycznych i spójnych interfejsów użytkownika. Dzięki temu mogę szybko budować responsywne strony internetowe zgodnie z najlepszymi praktykami UX. Dodatkowo, Chakra UI zapewnia elastyczne i łatwe w użyciu narzędzia do dostosowywania stylów, dzięki czemu mogę tworzyć spersonalizowane i unikalne wyglądy interfejsów."
+        },
+        "antd": {
+            "name": "Ant Design",
+            "description": "Posiadam doświadczenie w korzystaniu z Ant Design. Znam i rozumiem różnorodne komponenty oferowane przez tą biblioteke. Potrafię skutecznie wykorzystać te komponenty w celu tworzenia interfejsów użytkownika, które są zarówno funkcjonalne, jak i estetyczne. Ant Design zapewnia bogatą gamę gotowych stylów i wzorców projektowych, co pozwala mi skupić się na szybkim budowaniu solidnych aplikacji."
+        },
+        "rest": {
+            "name": "REST API",
+            "description": "Rozumiem podstawowe zasady architektury REST, takie jak zasoby, metody HTTP i struktura adresów URL. Znam różne formaty danych używane w REST API, takie jak JSON i XML oraz umiem przetwarzać i przesyłać dane w tych formatach. Potrafię obsługiwać metody HTTP, takie jak GET, POST, PUT i DELETE, aby wykonywać operacje CRUD na zasobach. Posiadam umiejętność obsługi autoryzacji i uwierzytelniania w REST API, np. poprzez klucze API."
+        },
+        "firebase": {
+            "name": "Firebase",
+            "description": "Posiadam podstawową wiedzę na temat Firebase. Firebase to platforma stworzona przez Google, która oferuje usługi backendowe i narzędzia deweloperskie. Znam podstawowe komponenty Firebase, takie jak Firebase Authentication, Firebase Realtime Database, Firebase Cloud Firestore. Rozumiem, jak skonfigurować projekt Firebase i zarządzać kontami użytkowników."
+        },
+        "i18n": {
+            "name": "i18n",
+            "description": "Posiadam podstawową wiedzę na temat i18n (międzynarodowych funkcji językowych). Znam i rozumiem podstawowe koncepcje i techniki związane z lokalizacją i internacjonalizacją aplikacji. Jestem w stanie implementować wielojęzyczne funkcje w moich projektach, takie jak tłumaczenie treści na różne języki, obsługa formatowania dat, walut i innych lokalnych konwencji."
+        },
+        "cypress": {
+            "name": "Cypress",
+            "description": "Mam doświadczenie w użyciu Cypress, narzędzia do testowania end-to-end (E2E) dla aplikacji webowych. Znam i rozumiem podstawowe koncepty Cypress, takie jak pisanie testów, tworzenie asercji, interakcja z elementami strony, a także zarządzanie asynchronicznością. Cypress umożliwia mi pisanie czytelnych, niezawodnych i łatwo zrozumiałych testów automatycznych, które sprawdzają poprawność działania aplikacji w różnych scenariuszach."
+        },
+        "git": {
+            "name": "Git",
+            "description": "Jestem w pełni zaznajomiony z podstawowymi koncepcjami GIT, takimi jak repozytoria, branch'e, commity, pull requesty i scalanie zmian. Potrafię tworzyć, klonować i zarządzać repozytoriami GIT, zarówno lokalnie, jak i na zdalnych serwerach. Potrafię efektywnie korzystać z gałęzi, aby tworzyć i zarządzać różnymi wersjami projektu. Ponadto, posiadam umiejętność rozwiązywania konfliktów scalania oraz przywracania i cofania zmian w historii projektu."
+        },
+        "github": {
+            "name": "GitHub",
+            "description": "Znam funkcje GitHub, takie jak tworzenie repozytoriów, dodawanie plików, wprowadzanie zmian poprzez tworzenie commitów i synchronizowanie ich z repozytorium zdalnym. Potrafię również tworzyć gałęzie w celu separacji prac, a następnie łączyć je z powrotem do głównej gałęzi. Dodatkowo, potrafię korzystać z podstawowych funkcji zarządzania problemami i śledzenia zmian w projekcie. Posiadam umiejętności, które pozwalają mi efektywnie współpracować w zespołach programistycznych."
+        },
+        "bitbucket": {
+            "name": "Bitbucket",
+            "description": "Znam funkcje Bitbucket, takie jak tworzenie repozytoriów, dodawanie plików, wprowadzanie zmian poprzez tworzenie commitów i synchronizowanie ich z repozytorium zdalnym. Potrafię również tworzyć gałęzie w celu separacji prac, a następnie łączyć je z powrotem do głównej gałęzi. Dodatkowo, potrafię korzystać z podstawowych funkcji zarządzania problemami i śledzenia zmian w projekcie. Posiadam umiejętności, które pozwalają mi efektywnie współpracować w zespołach programistycznych."
+        },
+        "npm": {
+            "name": "npm",
+            "description": "Potrafię efektywnie korzystać z NPM do instalacji, aktualizacji i zarządzania pakietami w projekcie JavaScript."
+        },
+        "yarn": {
+            "name": "Yarn",
+            "description": "Potrafię efektywnie korzystać z yarn do instalacji, aktualizacji i zarządzania pakietami w projekcie JavaScript. "
+        },
+        "jira": {
+            "name": "Jira",
+            "description": "Posiadam podstawową znajomość Jira - popularnego narzędzia do zarządzania projektami. Znam i rozumiem podstawowe funkcje Jiry, takie jak tworzenie zadań, przypisywanie ich do użytkowników, ustawianie priorytetów i terminów, oraz dodawanie komentarzy. Potrafię także śledzić postęp pracy i zarządzać tablicami Kanban. Jestem w stanie efektywnie korzystać z funkcji Jiry w celu organizacji pracy i współpracy zespołowej."
+        },
+        "xd": {
+            "name": "Adobe XD",
+            "description": "Posiadam podstawową wiedzę z zakresu Adobe XD. Potrafię korzystać z tego narzędzia do tworzenia interaktywnych projektów interfejsów użytkownika. Znam podstawowe funkcje takie jak tworzenie i edycja artboardów, dodawanie elementów interfejsu, definiowanie przepływu użytkownika za pomocą prototypów i linków, oraz tworzenie komponentów dla łatwiejszego zarządzania projektami. Potrafię również współpracować z zespołem projektowym poprzez udostępnianie projektów i komentowanie."
+        },
+        "ps": {
+            "name": "Adobe Photoshop",
+            "description": "Posiadam podstawową wiedzę z zakresu Adobe Photoshop. Znam i rozumiem podstawowe funkcje programu, takie jak tworzenie i edycja warstw, dostosowywanie rozmiaru obrazu, korzystanie z narzędzi selekcji, retuszowanie zdjęć, zmiana kolorów i kontrastu, oraz zapisywanie i eksportowanie plików w różnych formatach. Potrafię także przycinać i optymalizować obrazy do użycia na stronach internetowych, dbając o ich rozmiar i jakość."
+        },
+        "figma": {
+            "name": "Figma",
+            "description": "Znam podstawowe funkcje, które pozwalają mi tworzyć interaktywne projekty interfejsów użytkownika. Potrafię tworzyć i edytować projekty, dodawać elementy interfejsu, definiować przepływ użytkownika przy użyciu prototypów i linków, oraz tworzyć komponenty dla łatwiejszego zarządzania projektem. Współpraca z zespołem projektowym również nie sprawia mi problemów, ponieważ potrafię udostępniać projekty i komentować. Moja znajomość Figma  pozwala mi efektywnie korzystać z tego narzędzia do tworzenia estetycznych i intuicyjnych interfejsów użytkownika dla stron internetowych."
+        },
+        "node": {
+            "name": "Node.js",
+            "description": "Posiadam podstawową wiedzę na temat Node.js. Znam i rozumiem fundamentalne koncepty związane z Node.js, takie jak obsługa zdarzeń, moduły, strumienie, asynchroniczność i obsługa żądań i odpowiedzi HTTP. Jestem w stanie tworzyć proste serwery i aplikacje w środowisku Node.js, korzystając z wbudowanych modułów i narzędzi."
+        }
+    },
+    "projects": {
+        "id": "projekty",
+        "heading": "Projekty",
+        "buttons": {
+            "live": "live",
+            "github": "github",
+            "seeMore": "zobacz więcej",
+            "seeLess": "zobacz mniej"
+        },
+        "flNews": {
+            "title": "flNews",
+            "stack": "Next.js, TS, redux-toolkit, ant design, Rest API",
+            "description": "Aplikacja umożliwiająca użytkownikom przeglądanie newsów z różnych krajów świata."
+        },
+        "dishes-form": {
+            "title": "Dishes Form",
+            "stack": "Next.js, TS, Tailwind.css, React-final-form",
+            "description": "Aplikacja umożliwia użytkownikom tworzenie i przesyłanie informacji o daniu."
+        },
+        "country-quiz": {
+            "title": "Country Quiz",
+            "stack": "React, redux, firebase, Rest API",
+            "description": "Aplikacja dostarczająca użytkownikom informacje na temat państw świata z możliwością zagrania w quiz."
+        },
+        "what-to-do": {
+            "title": "What to do",
+            "stack": "React, Recoil, Theme UI, Rest API",
+            "description": "Aplikacja do zarządzania zadaniami. Użytkownik może dodać, usunąć lub edytować zadania, a także zaznaczyć jako wykonane."
+        },
+        "simple-editor": {
+            "title": "Simple Editor",
+            "stack": "Node.js, Express.js, CSS, JavaScript, Pug",
+            "description": "Prosty edytor tekstu z możliwością odczytu i zapisu danych do pliku JSON."
+        },
+        "dayen": {
+            "title": "Schoonmaakbedrijf Dayen",
+            "stack": "HTML, SCSS, Javascript",
+            "description": "Strona wizytówka dla holenderskiej firmy sprzątającej."
+        },
+        "sasinomierz": {
+            "title": "Sasinomierz",
+            "stack": "HTML, SCSS, Javascript",
+            "description": "Aplikacja do wymiany walut dla wymyślonej waluty o nazwie 'sasin'."
+        },
+        "make-a-burger": {
+            "title": "Make a burger",
+            "stack": "HTML, SCSS, Javascript",
+            "description": "Aplikacja symulująca działanie restauracji z burgerami. Użytkownik może stworzyć i zamówić burgera."
+        },
+        "leezon": {
+            "title": "Leezon",
+            "stack": "Gatsby.js, Typescript, Chakra UI, Formik, i18n",
+            "description": "Strona portfolio na której się aktualnie znajdujesz."
+        }
+    },
+    "contact": {
+        "id": "kontakt",
+        "heading": "Skontaktuj się.",
+        "description": "Szukasz wartościowego pracownika lub chcesz stworzyć własną stronę internetową/aplikację i potrzebujesz mojej pomocy? Zapraszam do kontaktu.",
+        "phone": "Telefon: ",
+        "email": "Email: ",
+        "number": "+48 600 113 271",
+        "myEmail": "filip.lizon1@gmail.com",
+        "fillForm": "Możesz także skorzystać z formularza kontaktowego:",
+        "labels": {
+            "name": "Imię",
+            "email": "Email",
+            "subject": "Temat",
+            "message": "Wiadomość"
+        },
+        "placeholders": {
+            "name": "Jan Nowak",
+            "email": "jannowak@gmail.com",
+            "subject": "Oferta pracy",
+            "message": "Cześć!"
+        },
+        "button": "Wyślij",
+        "validation": {
+            "fieldRequired": "To pole jest wymagane",
+            "invalidEmail": "Nieprawidłowy adres email"
+        }
     }
 }

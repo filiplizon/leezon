@@ -1,26 +1,31 @@
 import React from "react";
-import { Flex, useColorMode } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
+import { Flex, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import Heading from "../Heading/Heading";
-import { experienceData } from "../../utils/data/experience";
 import ExperienceCard from "../ExperienceCard/ExperienceCard";
+import { getExperience } from "../../utils/data/experience";
 
 const Experience = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
   const { colorMode } = useColorMode();
+  const { t } = useTranslation();
+  const experience = getExperience(t);
+
   return (
     <Flex
+      id={t("experience.id") as string}
       minH="100vh"
       flexDirection="column"
       alignItems="center"
       bg={`mode.${colorMode}.secondary`}
-      id="experience"
       pt="14vh"
       pb={isDesktop ? "10vh" : 0}
+      px={5}
+      textAlign="center"
       position="relative"
     >
       <Heading color={`mode.${colorMode}.text`} level="h3">
-        Work Experience
+        {t("experience.workExperience.heading")}
       </Heading>
       <Flex
         flexDirection={isDesktop ? "row" : "column"}
@@ -29,18 +34,18 @@ const Experience = () => {
         my={10}
         maxWidth="1100px"
       >
-        {experienceData.work.map(data => (
+        {experience.work.map(data => (
           <ExperienceCard key={data.title} {...data} />
         ))}
       </Flex>
       <Heading color={`mode.${colorMode}.text`} level="h3" mb={10}>
-        Education
+        {t("experience.education.heading")}
       </Heading>
       <ExperienceCard
-        title={experienceData.education.title}
-        company={experienceData.education.company}
-        date={experienceData.education.date}
-        description={experienceData.education.description}
+        title={experience.education.title}
+        company={experience.education.company}
+        date={experience.education.date}
+        description={experience.education.description}
         width="35%"
       />
     </Flex>

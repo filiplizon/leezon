@@ -37,8 +37,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       fontFamily="secondary"
       shadow="xl"
       borderRadius={10}
-      w={isDesktop ? width || "48%" : "90%"}
+      w={isDesktop ? width || "48%" : "100%"}
       zIndex="5"
+      textAlign="left"
       position="relative"
       pr={10}
       mb={isDesktop ? 0 : 10}
@@ -52,7 +53,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <Text my={2} fontSize="md">
         {date}
       </Text>
-      <UnorderedList mt={5} fontSize={isDesktop ? "md" : "md"}>
+      <UnorderedList
+        minH={isDesktop ? "260px" : "unset"}
+        mt={5}
+        fontSize={isDesktop ? "md" : "md"}
+      >
         {description.map((item, index) => (
           <ListItem key={index} mb={2}>
             {item}
