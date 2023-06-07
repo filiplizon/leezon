@@ -64,7 +64,13 @@ const About = () => {
             {t("about.text")}
           </Text>
           <Flex justifyContent={isDesktop ? "unset" : "center"}>
-            <Button width={isDesktop ? "40%" : "100%"}>
+            <Button
+              isLink
+              py={2}
+              href={t("about.cv") as string}
+              download
+              width={isDesktop ? "40%" : "100%"}
+            >
               {t("about.button")}
             </Button>
           </Flex>

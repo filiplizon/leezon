@@ -35,7 +35,8 @@
         "id": "o-mnie",
         "heading": "O mnie",
         "text": "Jestem 25-letnim inżynierem informatyki z prawie dwuletnim doświadczeniem jako Frontend Developer. Moja przygoda z programowaniem rozpoczęła się na początku studiów, a od tego czasu cały czas poszerzam swoje umiejętności i śledzę najnowsze trendy w branży. Czerpię ogromną satysfakcję z tworzenia responsywnych stron oraz aplikacji internetowych. Cechuje mnie ambitność i konsekwentność, szybko się uczę i zawsze chętnie poznaję nowe technologie. Jestem kreatywnym i skrupulatnym profesjonalistą, który uwielbia podejmować nowe wyzwania. Stawiam na czysty i czytelny kod, dbając jednocześnie o modularność i skalowalność. Świetnie radzę sobie zarówno w pracy zespołowej, jak i w indywidualnych projektach.",
-        "button": "pobierz CV"
+        "button": "pobierz CV",
+        "cv": "/cv/pl/Filip-Lizon.pdf"
     },
     "experience": {
         "id": "doswiadczenie",

@@ -3,9 +3,8 @@ import {
   Button as ChakraButton,
   Link as ChakraLink,
   useColorMode,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
-
 interface ButtonProps {
   children: React.ReactNode;
   width: string;
@@ -15,6 +14,7 @@ interface ButtonProps {
   py?: number;
   mt?: number;
   type?: "submit";
+  download?: boolean;
 }
 
 const Button = ({
@@ -26,6 +26,7 @@ const Button = ({
   py = 5,
   mt,
   type,
+  download,
 }: ButtonProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
   const { colorMode } = useColorMode();
@@ -55,6 +56,7 @@ const Button = ({
         borderColor: `mode.${colorMode}.text`,
       }}
       onClick={onClick}
+      download={download}
     >
       {children}
     </ButtonComponent>

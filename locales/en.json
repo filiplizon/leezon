@@ -35,7 +35,8 @@
         "id": "about",
         "heading": "About me",
         "text": "I am a 25-year-old IT engineer with almost two years of experience as a Frontend Developer. My journey with programming began during my studies, and since then, I have been continuously expanding my skills and staying up-to-date with the latest industry trends. I derive immense satisfaction from creating responsive websites and web applications. I am ambitious and consistent, I learn quickly and I am always eager to explore new technologies. I am a creative and detail-oriented professional who thrives on taking up new challenges. I focus on clean and readable code, while ensuring modularity and scalability. I excel both in team collaboration and individual projects.",
-        "button": "Download resume"
+        "button": "Download resume",
+        "cv": "/cv/eng/Filip-Lizon.pdf"
     },
     "experience": {
         "id": "experience",
