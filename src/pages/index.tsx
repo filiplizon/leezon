@@ -1,6 +1,6 @@
 import * as React from "react";
 import Layout from "../components/Layout/Layout";
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import { CSSReset, ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "../theme/theme";
 import Home from "../components/Home/Home";
 import About from "../components/About/About";
@@ -14,6 +14,7 @@ import i18n from "../../i18";
 const IndexPage = () => {
   return (
     <ChakraProvider theme={theme}>
+      <CSSReset />
       <I18nextProvider i18n={i18n}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <Layout>

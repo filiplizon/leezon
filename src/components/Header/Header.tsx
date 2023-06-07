@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Flex, Box, useColorMode } from "@chakra-ui/react";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
@@ -8,6 +8,15 @@ import Menu from "../Menu/Menu";
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { colorMode } = useColorMode();
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isMenuOpen]);
+
   return (
     <Box
       bgColor={`mode.${colorMode}.background`}
@@ -27,7 +36,7 @@ const Header = () => {
         mx="auto"
       >
         <Logo />
-        <Navigation isMenuOpen={isMenuOpen} />
+        <Navigation isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
         <Menu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
       </Flex>
     </Box>

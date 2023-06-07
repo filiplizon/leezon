@@ -4,7 +4,13 @@ import { useTranslation } from "react-i18next";
 import NavLink from "../NavLink/NavLink";
 import { getLinks } from "../../utils/data/navigation";
 
-const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
+const Navigation = ({
+  isMenuOpen,
+  setMenuOpen,
+}: {
+  isMenuOpen: boolean;
+  setMenuOpen: (isOpen: boolean) => void;
+}) => {
   const { t } = useTranslation();
   const links = getLinks(t);
   const [activeLink, setActiveLink] = useState("home".slice(1));
@@ -41,7 +47,10 @@ const Navigation = ({ isMenuOpen }: { isMenuOpen: boolean }) => {
             key={link}
             href={`#${link}`}
             isActive={activeLink === link.slice(1)}
-            onClick={() => handleLinkClick(link.slice(1))}
+            onClick={() => {
+              handleLinkClick(link.slice(1));
+              setMenuOpen(!isMenuOpen);
+            }}
           >
             {name}
           </NavLink>
