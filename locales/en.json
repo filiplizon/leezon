@@ -277,6 +277,14 @@
         "validation": {
             "fieldRequired": "This field is required",
             "invalidEmail": "Invalid email address"
+        },
+        "success": {
+            "header": "Message sent!",
+            "body": "I will contact you as soon as possible."
+        },
+        "error": {
+            "header": "Failure",
+            "body": "Please try again later."
         }
     }
 }

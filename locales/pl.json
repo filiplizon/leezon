@@ -277,6 +277,14 @@
         "validation": {
             "fieldRequired": "To pole jest wymagane",
             "invalidEmail": "Nieprawidłowy adres email"
+        },
+        "success": {
+            "header": "Wiadomość wysłana!",
+            "body": "Skontaktuję się z Tobą jak najszybciej."
+        },
+        "error": {
+            "header": "Niepowodzenie",
+            "body": "Spróbuj ponownie później."
         }
     }
 }
