@@ -19,6 +19,7 @@ const Contact: React.FC = () => {
 
   return (
     <Flex
+      as="section"
       id={t("contact.id") as string}
       bg={
         isDesktop

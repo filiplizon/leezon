@@ -13,6 +13,7 @@ const Experience = () => {
 
   return (
     <Flex
+      as="section"
       id={t("experience.id") as string}
       minH="100vh"
       flexDirection="column"

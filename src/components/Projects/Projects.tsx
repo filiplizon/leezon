@@ -39,6 +39,7 @@ const Projects: React.FC = () => {
 
   return (
     <Flex
+      as="section"
       id={t("projects.id") as string}
       flexDirection="column"
       alignItems="center"

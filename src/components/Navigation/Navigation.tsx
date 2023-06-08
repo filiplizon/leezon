@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import NavLink from "../NavLink/NavLink";
@@ -11,15 +11,58 @@ const Navigation = ({
   isMenuOpen: boolean;
   setMenuOpen: (isOpen: boolean) => void;
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const links = getLinks(t);
-  const [activeLink, setActiveLink] = useState("home".slice(1));
+  const [activeLink, setActiveLink] = useState("home");
   const [isDesktop] = useMediaQuery("(min-width: 900px)");
   const { colorMode } = useColorMode();
+  const [scrollEventEnabled, setScrollEventEnabled] = useState(true);
 
-  const handleLinkClick = (link: string) => {
-    setActiveLink(link);
-  };
+  const handleLinkClick = useCallback(
+    (link: string) => {
+      setActiveLink(link);
+      setMenuOpen(!isMenuOpen);
+      setScrollEventEnabled(false);
+      setTimeout(() => {
+        setScrollEventEnabled(true);
+      }, 1000);
+    },
+    [isMenuOpen, setMenuOpen]
+  );
+
+  const updateActiveLink = useCallback(() => {
+    if (!scrollEventEnabled) {
+      return;
+    }
+
+    const sectionElements = Array.from(
+      document.querySelectorAll("section[id]")
+    ) as HTMLElement[];
+
+    for (let i = sectionElements.length - 1; i >= 0; i--) {
+      const section = sectionElements[i];
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        setActiveLink(section.id);
+        break;
+      }
+    }
+  }, [scrollEventEnabled]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", updateActiveLink);
+    i18n.on("languageChanged", updateActiveLink);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveLink);
+      i18n.off("languageChanged", updateActiveLink);
+    };
+  }, [i18n, updateActiveLink]);
+
+  useEffect(() => {
+    updateActiveLink();
+  }, [updateActiveLink, i18n.language]);
 
   return (
     <>
@@ -46,11 +89,8 @@ const Navigation = ({
           <NavLink
             key={link}
             href={`#${link}`}
-            isActive={activeLink === link.slice(1)}
-            onClick={() => {
-              handleLinkClick(link.slice(1));
-              setMenuOpen(!isMenuOpen);
-            }}
+            isActive={activeLink === link}
+            onClick={() => handleLinkClick(link)}
           >
             {name}
           </NavLink>

@@ -49,6 +49,7 @@ const Skills: React.FC = () => {
 
   return (
     <Flex
+      as="section"
       id={t("skills.id") as string}
       bg={`mode.${colorMode}.secondary`}
       color={`mode.${colorMode}.text`}

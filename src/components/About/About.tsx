@@ -19,6 +19,7 @@ const About = () => {
 
   return (
     <Flex
+      as="section"
       id={t("about.id") as string}
       color={`mode.${colorMode}.text`}
       minH={isDesktop ? "100vh" : "100vh"}

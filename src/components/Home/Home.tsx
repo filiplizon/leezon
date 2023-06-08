@@ -28,6 +28,7 @@ const Home = () => {
 
   return (
     <Flex
+      as="section"
       id="home"
       height="100vh"
       flexDirection="column"
