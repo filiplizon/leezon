@@ -10,7 +10,7 @@ type NavLinkProps = {
 
 const NavLink = ({ children, href, isActive, onClick }: NavLinkProps) => {
   const { colorMode } = useColorMode();
-  const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
 
   return (
     <Link
@@ -22,7 +22,6 @@ const NavLink = ({ children, href, isActive, onClick }: NavLinkProps) => {
       mb={isDesktop ? 0 : 2}
       borderRadius={30}
       fontFamily="secondary"
-      fontSize={isDesktop ? 14 : 20}
       letterSpacing={2}
       color={`mode.${colorMode}.text`}
       border="1px solid transparent"

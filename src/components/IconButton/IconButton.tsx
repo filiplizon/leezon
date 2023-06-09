@@ -3,23 +3,22 @@ import { IconButton as ChakraIconButton } from "@chakra-ui/react";
 
 interface IconButtonProps {
   ariaLabel: string;
-  transform?: string;
   display?: string;
   icon: any;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  isDesktop?: boolean;
 }
 
 const IconButton = ({
   ariaLabel,
-  transform,
   display,
   icon,
   onClick,
+  isDesktop,
 }: IconButtonProps) => {
   return (
     <ChakraIconButton
       display={display}
-      mr={1}
       aria-label={ariaLabel}
       icon={icon}
       fontSize="30"
@@ -31,10 +30,9 @@ const IconButton = ({
       }}
       _hover={{
         bg: "transparent",
-        transform: "translateY(-10%)",
+        transform: isDesktop ? "translateY(-10%)" : "none",
       }}
       bg="transparent"
-      transform={transform}
     />
   );
 };

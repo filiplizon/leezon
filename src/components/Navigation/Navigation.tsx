@@ -14,7 +14,10 @@ const Navigation = ({
   const { t, i18n } = useTranslation();
   const links = getLinks(t);
   const [activeLink, setActiveLink] = useState("home");
-  const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const [isDesktop] = useMediaQuery("(min-width: 1000px)");
+  const [isMobileHorizontal] = useMediaQuery(
+    "screen and (max-width: 950px) and (orientation: landscape)"
+  );
   const { colorMode } = useColorMode();
   const [scrollEventEnabled, setScrollEventEnabled] = useState(true);
 
@@ -67,10 +70,10 @@ const Navigation = ({
   return (
     <>
       <Flex
-        pb={isDesktop ? 0 : 150}
-        pt={isDesktop ? 0 : 110}
+        pb={isDesktop ? 0 : isMobileHorizontal ? 75 : 160}
+        pt={isDesktop ? 0 : isMobileHorizontal ? 10 : 100}
         as="nav"
-        top={isDesktop ? 0 : "10.1vh"}
+        top={isDesktop ? 0 : "10vh"}
         left={0}
         position={isDesktop ? "relative" : "absolute"}
         height={isDesktop ? "unset" : "90vh"}
@@ -79,6 +82,7 @@ const Navigation = ({
         justifyContent="space-between"
         flexDirection={isDesktop ? "row" : "column"}
         background={isDesktop ? "transparent" : `mode.${colorMode}.background`}
+        fontSize={isDesktop ? 14 : isMobileHorizontal ? 10 : 20}
         textTransform="uppercase"
         transform={
           isMenuOpen || isDesktop ? "translateX(0)" : "translateX(100%)"

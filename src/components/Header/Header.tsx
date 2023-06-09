@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Flex, Box, useColorMode } from "@chakra-ui/react";
+import { Flex, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import Menu from "../Menu/Menu";
@@ -8,6 +8,9 @@ import Menu from "../Menu/Menu";
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { colorMode } = useColorMode();
+  const [isMobileHorizontal] = useMediaQuery(
+    "screen and (max-width: 950px) and (orientation: landscape)"
+  );
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -18,7 +21,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <Box
+    <Flex
       bgColor={`mode.${colorMode}.background`}
       borderBottom="1px solid"
       borderBottomColor={`mode.${colorMode}.gray`}
@@ -27,19 +30,20 @@ const Header = () => {
       width="100%"
       zIndex={10}
       px={5}
+      h={isMobileHorizontal ? "15vh" : "10vh"}
+      justifyContent="center"
     >
       <Flex
         justifyContent="space-between"
-        h="10vh"
         alignItems="center"
         maxWidth="1400px"
-        mx="auto"
+        width="100%"
       >
         <Logo />
         <Navigation isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
         <Menu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 

@@ -11,6 +11,10 @@ import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isSmallerThan1100] = useMediaQuery("(max-width: 1100px)");
+  const [isMobileHorizontal] = useMediaQuery(
+    "screen and (max-width: 950px) and (orientation: landscape)"
+  );
   const sizes = isDesktop ? [500, 700, 900, 1100] : [250, 350, 450, 550];
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
@@ -30,16 +34,23 @@ const Home = () => {
     <Flex
       as="section"
       id="home"
-      height="100vh"
+      minH="100vh"
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
       textTransform="uppercase"
       bgColor={`mode.${colorMode}.background`}
-      overflow={isDesktop ? "unset" : "hidden"}
-      mt={isDesktop ? 5 : 10}
+      overflow={isDesktop ? (isSmallerThan1100 ? "hidden" : "unset") : "hidden"}
+      mt={isDesktop ? 5 : isMobileHorizontal ? 0 : 10}
+      px={2}
     >
-      <Box h={150} w={150} mb={5} mt={10} position="relative">
+      <Box
+        h={isMobileHorizontal ? 100 : 150}
+        w={isMobileHorizontal ? 100 : 150}
+        mb={5}
+        mt={10}
+        position="relative"
+      >
         {sizes.map((size, index) => (
           <Box
             key={index}
@@ -63,7 +74,7 @@ const Home = () => {
       <Heading
         level="h2"
         fontFamily="secondary"
-        color={`mode.${colorMode}.gray`}
+        color={`mode.${colorMode}.text`}
         fontSize={20}
         letterSpacing={isDesktop ? 6 : 4}
         fontWeight={400}

@@ -6,7 +6,7 @@ import ExperienceCard from "../ExperienceCard/ExperienceCard";
 import { getExperience } from "../../utils/data/experience";
 
 const Experience = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
   const experience = getExperience(t);
@@ -32,7 +32,8 @@ const Experience = () => {
         flexDirection={isDesktop ? "row" : "column"}
         justifyContent="space-around"
         alignItems="center"
-        my={10}
+        mt={10}
+        mb={isDesktop ? 10 : 0}
         maxWidth="1100px"
       >
         {experience.work.map(data => (
@@ -47,7 +48,7 @@ const Experience = () => {
         company={experience.education.company}
         date={experience.education.date}
         description={experience.education.description}
-        width="35%"
+        width="40%"
       />
     </Flex>
   );

@@ -13,7 +13,7 @@ import DottedSquare from "../DottedSquare/DottedSquare";
 import ContactForm from "../Form/Form";
 
 const Contact: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
 
@@ -32,6 +32,7 @@ const Contact: React.FC = () => {
       pt={isDesktop ? "10vh" : "12vh"}
       px={5}
       justifyContent="center"
+      alignItems="center"
       position="relative"
       _before={{
         content: '""',

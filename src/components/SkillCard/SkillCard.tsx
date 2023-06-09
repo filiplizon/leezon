@@ -23,7 +23,7 @@ const SkillCard = ({
   isActive: boolean;
   onClick: () => void;
 }) => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
 
@@ -54,7 +54,7 @@ const SkillCard = ({
       <Image
         src={technology.image}
         alt={technology.name}
-        width={isDesktop ? "75%" : "unset"}
+        width={isDesktop ? "80%" : "75%"}
         borderRadius={10}
         zIndex={2}
       />

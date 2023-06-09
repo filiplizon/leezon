@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import { getTechnologies } from "../../utils/data/technologies";
@@ -14,7 +14,7 @@ interface Technology {
 }
 
 const Skills: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
   const technologies = getTechnologies(t);
@@ -53,8 +53,9 @@ const Skills: React.FC = () => {
       id={t("skills.id") as string}
       bg={`mode.${colorMode}.secondary`}
       color={`mode.${colorMode}.text`}
+      minH="100vh"
       pb={isDesktop ? 10 : 0}
-      pt={isDesktop ? "11vh" : 0}
+      pt={isDesktop ? "10vh" : 0}
       justifyContent="center"
       position="relative"
       _before={{
@@ -79,7 +80,7 @@ const Skills: React.FC = () => {
           justifyContent="center"
           pt={isDesktop ? 0 : "14vh"}
           px={5}
-          pb={isDesktop ? 10 : 5}
+          pb={isDesktop ? 20 : 10}
           textAlign={isDesktop ? "left" : "center"}
           width={isDesktop ? "48%" : "100%"}
           position="relative"
@@ -135,13 +136,14 @@ const Skills: React.FC = () => {
                 onClick={() => handleTechnologyClick(technology)}
               />
             ))}
-
-          <PaginationBar
-            totalPages={totalPages}
-            currentPage={currentPage}
-            isDesktop={isDesktop}
-            handlePageClick={handlePageClick}
-          />
+          <Flex w="100%" justifyContent="center">
+            <PaginationBar
+              totalPages={totalPages}
+              currentPage={currentPage}
+              isDesktop={isDesktop}
+              handlePageClick={handlePageClick}
+            />
+          </Flex>
         </Flex>
       </Flex>
     </Flex>

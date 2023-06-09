@@ -21,7 +21,7 @@ const ProjectCard: React.FC<Project> = ({
   githubURL,
   width,
 }) => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
   const buttonWidth = "48%";

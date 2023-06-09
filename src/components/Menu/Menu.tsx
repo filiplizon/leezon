@@ -13,7 +13,7 @@ interface MenuProps {
 const Menu = ({ isMenuOpen, setMenuOpen }: MenuProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { i18n, t } = useTranslation();
-  const [isDesktop] = useMediaQuery("(min-width: 900px)");
+  const [isDesktop] = useMediaQuery("(min-width: 1000px)");
 
   const changeLanguage = () => {
     const currentLanguage = i18n.language;
@@ -33,7 +33,7 @@ const Menu = ({ isMenuOpen, setMenuOpen }: MenuProps) => {
         fontSize={22}
         onClick={changeLanguage}
         _hover={{
-          transform: "translateY(-10%)",
+          transform: isDesktop ? "translateY(-10%)" : "none",
         }}
         _active={{
           bg: "transparent",
@@ -45,15 +45,15 @@ const Menu = ({ isMenuOpen, setMenuOpen }: MenuProps) => {
         ariaLabel="change theme"
         icon={colorMode === "dark" ? <CiLight /> : <CiDark />}
         onClick={toggleColorMode}
+        isDesktop={isDesktop}
       />
       <IconButton
-        display={isDesktop ? "none" : "block"}
+        display={isDesktop ? "none" : "flex"}
         ariaLabel="expand menu"
         icon={<HiOutlineMenuAlt3 />}
         onClick={() => {
           setMenuOpen(!isMenuOpen);
         }}
-        transform={isMenuOpen ? "rotateZ(0deg)" : "rotateZ(180deg)"}
       />
     </Flex>
   );

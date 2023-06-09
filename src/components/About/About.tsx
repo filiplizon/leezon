@@ -13,7 +13,7 @@ import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
 
 const About = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 800px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
 
@@ -22,7 +22,7 @@ const About = () => {
       as="section"
       id={t("about.id") as string}
       color={`mode.${colorMode}.text`}
-      minH={isDesktop ? "100vh" : "100vh"}
+      minH="100vh"
       flexDirection={isDesktop ? "row" : "column"}
       alignItems="center"
       justifyContent="center"
@@ -30,8 +30,8 @@ const About = () => {
       overflowX="hidden"
       position="relative"
       px={5}
-      pt="12vh"
-      pb={isDesktop ? 0 : 10}
+      pt={isDesktop ? "10vh" : "12vh"}
+      pb={10}
     >
       <Flex
         maxWidth="1100px"
@@ -43,14 +43,14 @@ const About = () => {
           src={portraitImage}
           alt="portrait"
           borderRadius="8%"
-          width={isDesktop ? "320px" : "200px"}
+          width={isDesktop ? "270px" : "200px"}
           zIndex={2}
           shadow="lg"
         />
         <Flex
           direction="column"
           color={`mode.${colorMode}.text`}
-          ml={isDesktop ? 20 : 0}
+          ml={isDesktop ? 10 : 0}
           mt={10}
         >
           <Heading color={`mode.${colorMode}.text`} level="h3">
@@ -59,7 +59,7 @@ const About = () => {
           <Text
             fontSize="sm"
             my={5}
-            width={isDesktop ? "500px" : "unset"}
+            width={isDesktop ? "480px" : "unset"}
             fontFamily="secondary"
           >
             {t("about.text")}
@@ -79,7 +79,7 @@ const About = () => {
       </Flex>
       <DottedSquare
         position={isDesktop ? "relative" : "absolute"}
-        top={isDesktop ? "-160px" : "-25px"}
+        top={isDesktop ? "-180px" : "-25px"}
         left="0"
         width="200px"
         height="200px"

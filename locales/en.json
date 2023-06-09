@@ -286,5 +286,9 @@
             "header": "Failure",
             "body": "Please try again later."
         }
+    },
+    "socialLinks": {
+        "github": "https://github.com/filiplizon",
+        "linkedin": "https://www.linkedin.com/in/filip-lizon/"
     }
 }

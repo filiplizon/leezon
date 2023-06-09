@@ -25,7 +25,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   description,
   width,
 }) => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
 
   return (

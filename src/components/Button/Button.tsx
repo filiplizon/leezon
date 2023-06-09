@@ -28,7 +28,7 @@ const Button = ({
   type,
   download,
 }: ButtonProps) => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
 
   const ButtonComponent = isLink ? ChakraLink : ChakraButton;

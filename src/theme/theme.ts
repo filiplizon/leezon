@@ -9,7 +9,7 @@ const colors = {
       text: "#FFFFFF",
     },
     light: {
-      background: "#fafafa",
+      background: "#FAFAFA",
       secondary: "#EEEEEE",
       gray: "#AEAEAE",
       text: "#1F1F1F",

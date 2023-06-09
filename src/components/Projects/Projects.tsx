@@ -11,7 +11,7 @@ import { Project } from "../../utils/types/project";
 import { useTranslation } from "react-i18next";
 
 const Projects: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 700px)");
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -43,9 +43,10 @@ const Projects: React.FC = () => {
       id={t("projects.id") as string}
       flexDirection="column"
       alignItems="center"
+      justifyContent="center"
       minH="100vh"
       bg={`mode.${colorMode}.secondary`}
-      pt="14vh"
+      pt={isDesktop ? "10vh" : "14vh"}
       pb={10}
       position="relative"
     >
