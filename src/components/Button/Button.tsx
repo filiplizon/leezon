@@ -5,6 +5,9 @@ import {
   useColorMode,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
+import { opacityAnimation } from "../../utils/animations";
+
 interface ButtonProps {
   children: React.ReactNode;
   width: string;
@@ -30,6 +33,9 @@ const Button = ({
 }: ButtonProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
 
   const ButtonComponent = isLink ? ChakraLink : ChakraButton;
 
@@ -37,6 +43,7 @@ const Button = ({
     <ButtonComponent
       type={type}
       href={href}
+      ref={ref}
       textAlign="center"
       borderRadius={30}
       py={py}
@@ -52,6 +59,9 @@ const Button = ({
       fontWeight={400}
       shadow="base"
       mt={mt}
+      animation={
+        inView ? `${opacityAnimation} .5s ease-in-out forwards` : "none"
+      }
       _hover={{
         borderColor: `mode.${colorMode}.text`,
       }}

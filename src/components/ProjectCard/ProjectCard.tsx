@@ -11,6 +11,8 @@ import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
 import { Project } from "../../utils/types/project";
 import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
+import { slideFromBottom } from "../../utils/animations";
 
 const ProjectCard: React.FC<Project> = ({
   title,
@@ -24,10 +26,14 @@ const ProjectCard: React.FC<Project> = ({
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
   const buttonWidth = "48%";
 
   return (
     <Flex
+      ref={ref}
       flexDirection="column"
       bg={`mode.${colorMode}.background`}
       pb={5}
@@ -39,6 +45,9 @@ const ProjectCard: React.FC<Project> = ({
       position="relative"
       mb={isDesktop ? 0 : 10}
       shadow="md"
+      animation={
+        inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
+      }
     >
       <Image
         mb={5}

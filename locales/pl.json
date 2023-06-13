@@ -3,7 +3,11 @@
     "logo": "Leezon",
     "home": {
         "name": "Filip Lizoń",
-        "position": "Frontend Developer"
+        "position": {
+            "frontend": "Frontend Developer",
+            "react": "React Developer",
+            "javascript": "Javascript Developer"
+        }
     },
     "navigation": {
         "home": {

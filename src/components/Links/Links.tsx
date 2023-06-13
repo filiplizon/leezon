@@ -3,6 +3,7 @@ import { Flex, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import SocialLink from "../SocialLink/SocialLink";
 import { useTranslation } from "react-i18next";
+import { opacityAnimation } from "../../utils/animations";
 
 const Links = () => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
@@ -26,6 +27,8 @@ const Links = () => {
       shadow="md"
       border="1px solid"
       borderColor={`mode.${colorMode}.gray`}
+      opacity={0}
+      animation={`${opacityAnimation} .5s ease-in-out 2.2s forwards`}
     >
       <SocialLink
         link={t("socialLinks.github")}

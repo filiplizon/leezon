@@ -7,7 +7,6 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-
 interface Technology {
   name: string;
   description: string;

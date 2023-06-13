@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Heading as ChakraHeading } from "@chakra-ui/react";
-
 interface HeadingProps {
   children: React.ReactNode;
   level: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

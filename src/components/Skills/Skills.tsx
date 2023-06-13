@@ -1,11 +1,13 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import { getTechnologies } from "../../utils/data/technologies";
 import SkillCard from "../SkillCard/SkillCard";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useTranslation } from "react-i18next";
+import { useInView } from "react-intersection-observer";
+import { opacityAnimation } from "../../utils/animations";
 
 interface Technology {
   name: string;
@@ -46,6 +48,10 @@ const Skills: React.FC = () => {
   const handleTechnologyClick = (technology: Technology): void => {
     setActiveTechnology(technology);
   };
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
 
   return (
     <Flex
@@ -116,7 +122,7 @@ const Skills: React.FC = () => {
           </Flex>
         </Flex>
         <Flex
-          mt={isDesktop ? 0 : 10}
+          ref={ref}
           width={isDesktop ? "50%" : "100%"}
           px={2}
           pt={isDesktop ? 0 : 5}
@@ -124,7 +130,10 @@ const Skills: React.FC = () => {
           flexWrap="wrap"
           ml={isDesktop ? 20 : 0}
           position="relative"
-          marginTop={isDesktop ? 10 : 0}
+          marginTop={isDesktop ? 5 : 0}
+          animation={
+            inView ? `${opacityAnimation} .5s ease-in-out forwards` : "none"
+          }
         >
           {technologies
             .slice(indexOfFirstTechnology, indexOfLastTechnology)

@@ -8,6 +8,8 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { Field } from "formik";
+import { useInView } from "react-intersection-observer";
+import { slideFromRight } from "../../utils/animations";
 
 interface InputFieldProps {
   name: string;
@@ -23,13 +25,19 @@ const InputField: React.FC<InputFieldProps> = ({
   isMessage,
 }) => {
   const { colorMode } = useColorMode();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
+
   const InputComponent = isMessage ? Textarea : Input;
+
   return (
     <Field name={name}>
       {({ field, form }) => (
         <FormControl isInvalid={form.errors[name] && form.touched[name]} mb={5}>
           <FormLabel htmlFor={name}>{label}</FormLabel>
           <InputComponent
+            ref={ref}
             {...field}
             borderColor={`mode.${colorMode}.gray`}
             _focus={{
@@ -46,6 +54,9 @@ const InputField: React.FC<InputFieldProps> = ({
             }}
             id={name}
             placeholder={placeholder}
+            animation={
+              inView ? `${slideFromRight} .5s ease-in-out forwards` : "none"
+            }
           />
           <FormErrorMessage>{form.errors[name]}</FormErrorMessage>
         </FormControl>

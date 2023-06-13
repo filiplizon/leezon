@@ -8,6 +8,8 @@ import {
 } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import { useTranslation } from "react-i18next";
+import { TypeAnimation } from "react-type-animation";
+import { scaleAnimation } from "../../utils/animations";
 
 const Home = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
@@ -23,11 +25,11 @@ const Home = () => {
     position: "absolute",
     top: "50%",
     left: "50%",
-    transform: "translate(-50%, -50%)",
+    transform: "translate(-50%, -50%) scale(0)",
     border: "1px solid",
     borderColor: `mode.${colorMode}.gray`,
     borderRadius: "50%",
-    zIndex: "1",
+    zIndex: 1,
   };
 
   return (
@@ -41,8 +43,9 @@ const Home = () => {
       textTransform="uppercase"
       bgColor={`mode.${colorMode}.background`}
       overflow={isDesktop ? (isSmallerThan1100 ? "hidden" : "unset") : "hidden"}
-      mt={isDesktop ? 5 : isMobileHorizontal ? 0 : 10}
+      pt={isDesktop ? 5 : isMobileHorizontal ? 0 : 10}
       px={2}
+      fontFamily="secondary"
     >
       <Box
         h={isMobileHorizontal ? 100 : 150}
@@ -59,6 +62,9 @@ const Home = () => {
               width: `${size}px`,
               height: `${size}px`,
               opacity: `${0.5 + index * 0.1}`,
+              animation: `${scaleAnimation} 1s ease-in-out ${
+                index * 0.4
+              }s forwards`,
             }}
           ></Box>
         ))}
@@ -71,16 +77,26 @@ const Home = () => {
           position="relative"
         />
       </Box>
-      <Heading
-        level="h2"
-        fontFamily="secondary"
-        color={`mode.${colorMode}.text`}
-        fontSize={20}
-        letterSpacing={isDesktop ? 6 : 4}
-        fontWeight={400}
-      >
-        {t("home.position")}
-      </Heading>
+      <TypeAnimation
+        sequence={[
+          t("home.position.frontend") as string,
+          2000,
+          t("home.position.react") as string,
+          2000,
+          t("home.position.javascript") as string,
+          2000,
+        ]}
+        wrapper="h2"
+        speed={50}
+        style={{
+          display: "inline-block",
+          color: `mode.${colorMode}.text`,
+          fontSize: 20,
+          letterSpacing: 4,
+          fontWeight: 400,
+        }}
+        repeat={Infinity}
+      />
       <Heading
         level="h1"
         letterSpacing={3}

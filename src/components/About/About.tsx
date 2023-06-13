@@ -11,11 +11,17 @@ import portraitImage from "../../images/portrait.jpg";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
+import { useInView } from "react-intersection-observer";
+import { slideFromBottom } from "../../utils/animations";
 
 const About = () => {
   const [isDesktop] = useMediaQuery("(min-width: 800px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
 
   return (
     <Flex
@@ -57,10 +63,14 @@ const About = () => {
             {t("about.heading")}
           </Heading>
           <Text
+            ref={ref}
             fontSize="sm"
             my={5}
             width={isDesktop ? "480px" : "unset"}
             fontFamily="secondary"
+            animation={
+              inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
+            }
           >
             {t("about.text")}
           </Text>
