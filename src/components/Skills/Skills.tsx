@@ -7,7 +7,8 @@ import SkillCard from "../SkillCard/SkillCard";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
-import { opacityAnimation } from "../../utils/animations";
+import { slideFromBottom } from "../../utils/animations";
+import { useSwipeable } from "react-swipeable";
 
 interface Technology {
   name: string;
@@ -51,6 +52,20 @@ const Skills: React.FC = () => {
 
   const [ref, inView] = useInView({
     triggerOnce: true,
+  });
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (currentPage < totalPages) {
+        setCurrentPage(currentPage + 1);
+      }
+    },
+    onSwipedRight: () => {
+      if (currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
+    },
+    preventScrollOnSwipe: true,
   });
 
   return (
@@ -116,13 +131,19 @@ const Skills: React.FC = () => {
             >
               {activeTechnology.name}
             </Text>
-            <Text fontSize="md" height={isDesktop ? "120px" : "unset"}>
+            <Text
+              ref={ref}
+              fontSize="md"
+              height={isDesktop ? "120px" : "unset"}
+              animation={
+                inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
+              }
+            >
               {activeTechnology.description}
             </Text>
           </Flex>
         </Flex>
         <Flex
-          ref={ref}
           width={isDesktop ? "50%" : "100%"}
           px={2}
           pt={isDesktop ? 0 : 5}
@@ -131,9 +152,7 @@ const Skills: React.FC = () => {
           ml={isDesktop ? 20 : 0}
           position="relative"
           marginTop={isDesktop ? 5 : 0}
-          animation={
-            inView ? `${opacityAnimation} .5s ease-in-out forwards` : "none"
-          }
+          {...swipeHandlers}
         >
           {technologies
             .slice(indexOfFirstTechnology, indexOfLastTechnology)
