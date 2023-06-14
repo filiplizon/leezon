@@ -1,4 +1,8 @@
 {
+    "meta": {
+        "title": "Leezon",
+        "description": "Hello! I am Filip Lizoń, a frontend developer specializing in creating interactive and responsive websites. I present to you my portfolio, where I showcase my skills, experience, and projects I have worked on. I utilize advanced tools and technologies such as React, TypeScript, CSS, and many others to create high-quality web applications. Take a look at my projects, explore my experience, and see the problems I have solved using modern frontend tools and techniques. If you need a professional frontend developer for your project, I am ready to take action! Contact me to discuss your needs and collaborate on innovative solutions. Explore my portfolio and discover my frontend programming skills."
+    },
     "changeLanguageButton": "PL",
     "logo": "Leezon",
     "home": {
@@ -52,7 +56,7 @@
                 "date": "12.2022 - 04.2023",
                 "responsibilities": {
                     "1": "Designing, implementing, and testing code based on business and technical requirements of a recruitment process supporting application",
-                    "2": "Creating responsive user interfaces using TypeScript / React / Chakra UI",
+                    "2": "Creating responsive user interfaces using TypeScript, React, Chakra UI",
                     "3": "Integrating user interface with APIs using standard network protocols",
                     "4": "Troubleshooting and debugging code, as well as optimizing application performance"
                 }

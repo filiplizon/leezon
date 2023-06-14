@@ -8,7 +8,7 @@ import Experience from "../components/Experience/Experience";
 import Skills from "../components/Skills/Skills";
 import Projects from "../components/Projects/Projects";
 import Contact from "../components/Contact/Contact";
-import { I18nextProvider } from "react-i18next";
+import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "../../i18";
 
 const IndexPage = () => {
@@ -30,6 +30,15 @@ const IndexPage = () => {
   );
 };
 
-export const Head = () => <title>Leezon Portfolio</title>;
+export function Head() {
+  const { t } = useTranslation();
+  return (
+    <>
+      <html lang={i18n.language} />
+      <title>{t("meta.title")}</title>
+      <meta name="description" content={t("meta.description") as string} />
+    </>
+  );
+}
 
 export default IndexPage;

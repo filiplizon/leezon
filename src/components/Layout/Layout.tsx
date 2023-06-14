@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import Header from "../Header/Header";
 import Links from "../Links/Links";
-
 interface LayoutProps {
   children: React.ReactNode;
 }

@@ -50,6 +50,7 @@ const ProjectCard: React.FC<Project> = ({
       }
     >
       <Image
+        alt={title}
         mb={5}
         borderBottom="1px solid"
         borderBottomColor={`mode.${colorMode}.gray`}
@@ -76,10 +77,22 @@ const ProjectCard: React.FC<Project> = ({
           {description}
         </Text>
         <Flex width="100%" mt={5} justifyContent="space-between">
-          <Button isLink href={liveURL} py={2} width={buttonWidth}>
+          <Button
+            name={t("projects.buttons.live")}
+            isLink
+            href={liveURL}
+            py={2}
+            width={buttonWidth}
+          >
             {t("projects.buttons.live")}
           </Button>
-          <Button isLink href={githubURL} py={2} width={buttonWidth}>
+          <Button
+            name={t("projects.buttons.github")}
+            isLink
+            href={githubURL}
+            py={2}
+            width={buttonWidth}
+          >
             {t("projects.buttons.github")}
           </Button>
         </Flex>

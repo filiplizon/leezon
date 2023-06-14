@@ -76,6 +76,7 @@ const About = () => {
           </Text>
           <Flex justifyContent={isDesktop ? "unset" : "center"}>
             <Button
+              name={t("about.button")}
               isLink
               py={2}
               href={t("about.cv") as string}

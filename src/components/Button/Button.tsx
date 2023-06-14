@@ -18,6 +18,7 @@ interface ButtonProps {
   mt?: number;
   type?: "submit";
   download?: boolean;
+  name: string;
 }
 
 const Button = ({
@@ -30,6 +31,7 @@ const Button = ({
   mt,
   type,
   download,
+  name,
 }: ButtonProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
@@ -41,6 +43,7 @@ const Button = ({
 
   return (
     <ButtonComponent
+      name={name}
       type={type}
       href={href}
       ref={ref}

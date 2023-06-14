@@ -70,7 +70,7 @@ const Home = () => {
         ))}
         <Image
           src="https://avatars.githubusercontent.com/u/71847286?s=400&u=2a252326a2369812cf5d04f4d025557981528117&v=4"
-          alt="portrait"
+          alt="avatar"
           objectFit="cover"
           borderRadius="50%"
           zIndex={2}

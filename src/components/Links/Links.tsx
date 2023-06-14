@@ -31,11 +31,13 @@ const Links = () => {
       animation={`${opacityAnimation} .5s ease-in-out 2.2s forwards`}
     >
       <SocialLink
+        name="github-link"
         link={t("socialLinks.github")}
         isDesktop={isDesktop}
         icon={<AiFillGithub />}
       />
       <SocialLink
+        name="linkedin-link"
         link={t("socialLinks.linkedin")}
         isDesktop={isDesktop}
         icon={<AiFillLinkedin />}

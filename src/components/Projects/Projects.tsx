@@ -73,7 +73,11 @@ const Projects: React.FC = () => {
       </Flex>
       {!isDesktop && (
         <Flex width="100%" justifyContent="center">
-          <Button width="90%" onClick={handleButtonClick}>
+          <Button
+            name={t("projects.buttons.seeMore")}
+            width="90%"
+            onClick={handleButtonClick}
+          >
             {showMore
               ? t("projects.buttons.seeLess")
               : t("projects.buttons.seeMore")}

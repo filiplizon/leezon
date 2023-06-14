@@ -107,7 +107,7 @@ const ContactForm: React.FC = () => {
             placeholder={t("contact.placeholders.message")}
             isMessage
           />
-          <Button mt={2} width="100%" type="submit">
+          <Button name="formButton" mt={2} width="100%" type="submit">
             {t("contact.button")}
           </Button>
         </Form>

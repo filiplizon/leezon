@@ -19,6 +19,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
     <Flex>
       {Array.from({ length: totalPages }, (_, i: number) => (
         <Box
+          aria-label={`page ${i + 1}`}
           key={i}
           as="button"
           borderRadius="full"

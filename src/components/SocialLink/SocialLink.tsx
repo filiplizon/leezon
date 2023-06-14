@@ -6,11 +6,12 @@ interface SocialLinkProps {
   link: string;
   isDesktop: boolean;
   icon: any;
+  name: string;
 }
 
-const SocialLink = ({ link, isDesktop, icon }: SocialLinkProps) => {
+const SocialLink = ({ link, isDesktop, icon, name }: SocialLinkProps) => {
   return (
-    <Link to={link} target="_blank">
+    <Link to={link} target="_blank" aria-label={name}>
       <Box
         fontSize={isDesktop ? 30 : 35}
         transition="transform 0.2s"

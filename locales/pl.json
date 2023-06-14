@@ -1,4 +1,8 @@
 {
+    "meta": {
+        "title": "Leezon",
+        "description": "Witaj! Jestem Filip Lizoń, frontend developer specjalizujący się w tworzeniu interaktywnych i responsywnych stron internetowych. Przedstawiam Ci moje portfolio, gdzie prezentuję moje umiejętności, doświadczenie i projekty, na których pracowałem. Korzystam z zaawansowanych narzędzi i technologii, takich jak React, TypeScript, CSS i wiele innych, aby tworzyć aplikacje internetowe o wysokiej jakości użytkowej. Przejdź przez moje projekty, zapoznaj się z moim doświadczeniem i zobacz, jakie problemy rozwiązałem przy użyciu nowoczesnych narzędzi i technik frontendowych. Jeśli potrzebujesz profesjonalnego frontenda do swojego projektu, jestem gotowy do działania! Skontaktuj się ze mną, aby omówić swoje potrzeby i wspólnie stworzyć innowacyjne rozwiązania. Zobacz moje portfolio i poznaj moje umiejętności w programowaniu frontendu."
+    },
     "changeLanguageButton": "EN",
     "logo": "Leezon",
     "home": {
@@ -52,7 +56,7 @@
                 "date": "12.2022 - 04.2023",
                 "responsibilities": {
                     "1": "Projektowanie, implementacja i testowanie kodu w oparciu o wymagania biznesowe i techniczne aplikacji wspomagającej proces rekrutacji",
-                    "2": "Tworzenie responsywnych interfejsów użytkownika przy użyciu TypeScript / React / Chakra UI",
+                    "2": "Tworzenie responsywnych interfejsów użytkownika przy użyciu TypeScript, React, Chakra UI",
                     "3": "Integracja interfejsu użytkownika z API z wykorzystaniem standardowych protokołów sieciowych (Rest API)",
                     "4": "Rozwiązywanie problemów i debugowanie kodu, a także optymalizacja wydajności aplikacji"
                 }
@@ -94,7 +98,7 @@
         "heading": "Umiejętności",
         "javascript": {
             "name": "JavaScript",
-            "description": "Posiadam solidną znajomość tego języka programowania i umiem tworzyć efektywne i interaktywne strony internetowe. Znam najważniejsze koncepcje i techniki programowania w JavaScript, takie jak manipulacja DOM, obsługa zdarzeń, programowanie asynchroniczne i tworzenie interfejsów użytkownika. Moje umiejętności w JavaScript pozwalają mi tworzyć wydajny i czytelny kod, który jest łatwy w utrzymaniu i rozszerzaniu. Mam zdolność rozwiązywania problemów i dostosowywania się do zmieniających się wymagań projektu."
+            "description": "Posiadam solidną znajomość tego języka programowania oraz umiem tworzyć efektywne i interaktywne strony internetowe. Znam najważniejsze koncepcje i techniki programowania w JavaScript, takie jak manipulacja DOM, obsługa zdarzeń, programowanie asynchroniczne i tworzenie interfejsów użytkownika. Moje umiejętności w JavaScript pozwalają mi tworzyć wydajny i czytelny kod, który jest łatwy w utrzymaniu i rozszerzaniu. Mam zdolność rozwiązywania problemów i dostosowywania się do zmieniających się wymagań projektu."
         },
         "typescript": {
             "name": "TypeScript",
