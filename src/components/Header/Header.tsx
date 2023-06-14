@@ -15,9 +15,9 @@ const Header = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.classList.add("no-scroll");
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.classList.remove("no-scroll");
+      document.body.style.overflow = "auto";
     }
   }, [isMenuOpen]);
 
