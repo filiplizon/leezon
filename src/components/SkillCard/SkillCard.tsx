@@ -1,30 +1,43 @@
 import React from "react";
-import {
-  Flex,
-  Text,
-  Image,
-  useMediaQuery,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Flex, Text, useMediaQuery, useColorMode, Box } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-interface Technology {
-  name: string;
-  description: string;
-  image: string;
-}
+import { graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const SkillCard = ({
   technology,
   isActive,
   onClick,
 }: {
-  technology: Technology;
+  technology: string;
   isActive: boolean;
   onClick: () => void;
 }) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+
+  const data = useStaticQuery(graphql`
+    query SkillIcon {
+      allFile {
+        edges {
+          node {
+            relativePath
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const skillIcon = data.allFile.edges
+    .filter((edge: any) => {
+      const path = edge.node.relativePath;
+      return path === `skills/${technology}.webp`;
+    })
+    .map((edge: any) => getImage(edge.node.childImageSharp.gatsbyImageData));
 
   return (
     <Flex
@@ -50,15 +63,13 @@ const SkillCard = ({
         shadow: "lg",
       }}
     >
-      <Image
-        src={technology.image}
-        alt={technology.name}
-        width={isDesktop ? "80%" : "75%"}
-        borderRadius={10}
-        zIndex={2}
-      />
+      <Box width="100px" height="100px">
+        {skillIcon.length > 0 && (
+          <GatsbyImage image={skillIcon[0]} alt={`${technology} icon`} />
+        )}
+      </Box>
       <Text fontFamily="secondary" mt={2}>
-        {technology.name}
+        {t(`skills.${technology}.name`)}
       </Text>
     </Flex>
   );

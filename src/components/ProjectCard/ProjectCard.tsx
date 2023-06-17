@@ -1,28 +1,15 @@
 import * as React from "react";
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  useColorMode,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
 import { Project } from "../../utils/types/project";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../../utils/animations";
+import { graphql, useStaticQuery } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-const ProjectCard: React.FC<Project> = ({
-  title,
-  image,
-  technologies,
-  description,
-  liveURL,
-  githubURL,
-  width,
-}) => {
+const ProjectCard: React.FC<Project> = ({ title }) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
@@ -30,6 +17,28 @@ const ProjectCard: React.FC<Project> = ({
     triggerOnce: true,
   });
   const buttonWidth = "48%";
+
+  const data = useStaticQuery(graphql`
+    query ProjectImage {
+      allFile {
+        edges {
+          node {
+            relativePath
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const projectImage = data.allFile.edges
+    .filter((edge: any) => {
+      const path = edge.node.relativePath;
+      return path === `projects/${title}.webp`;
+    })
+    .map((edge: any) => getImage(edge.node.childImageSharp.gatsbyImageData));
 
   return (
     <Flex
@@ -40,7 +49,7 @@ const ProjectCard: React.FC<Project> = ({
       color={`mode.${colorMode}.text`}
       fontFamily="secondary"
       borderRadius={10}
-      w={isDesktop ? width || "31%" : "90%"}
+      w={isDesktop ? "31%" : "90%"}
       zIndex="5"
       position="relative"
       mb={isDesktop ? 0 : 10}
@@ -49,38 +58,44 @@ const ProjectCard: React.FC<Project> = ({
         inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
       }
     >
-      <Image
-        alt={title}
-        mb={5}
+      <Box
+        height="50%"
         borderBottom="1px solid"
         borderBottomColor={`mode.${colorMode}.gray`}
         borderTopRadius={10}
-        height="50%"
-        src={image}
-      />
+        mb={5}
+      >
+        {projectImage[0] && (
+          <GatsbyImage
+            image={projectImage[0]}
+            alt={`screen from ${title}`}
+            style={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
+          />
+        )}
+      </Box>
       <Box px={5}>
         <Heading level="h4" fontSize="xl" mb={2}>
-          {title}
+          {t(`projects.${title}.title`)}
         </Heading>
         <Text
           my={2}
           color={`mode.${colorMode}.gray`}
           fontSize={isDesktop ? 14 : 16}
         >
-          {technologies}
+          {t(`projects.${title}.stack`)}
         </Text>
         <Text
           fontFamily="secondary"
           h={isDesktop ? "65px" : "unset"}
           fontSize={isDesktop ? 14 : 16}
         >
-          {description}
+          {t(`projects.${title}.description`)}
         </Text>
         <Flex width="100%" mt={5} justifyContent="space-between">
           <Button
             name={t("projects.buttons.live")}
             isLink
-            href={liveURL}
+            href={t(`projects.${title}.liveURL`) as string}
             py={2}
             width={buttonWidth}
           >
@@ -89,7 +104,7 @@ const ProjectCard: React.FC<Project> = ({
           <Button
             name={t("projects.buttons.github")}
             isLink
-            href={githubURL}
+            href={t(`projects.${title}.githubURL`) as string}
             py={2}
             width={buttonWidth}
           >

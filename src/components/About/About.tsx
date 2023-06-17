@@ -1,18 +1,12 @@
 import * as React from "react";
-import {
-  Flex,
-  Image,
-  Text,
-  useColorMode,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import portraitImage from "../../images/portrait.jpg";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import Heading from "../Heading/Heading";
 import Button from "../Button/Button";
 import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../../utils/animations";
+import { StaticImage } from "gatsby-plugin-image";
 
 const About = () => {
   const [isDesktop] = useMediaQuery("(min-width: 800px)");
@@ -45,14 +39,20 @@ const About = () => {
         alignItems="center"
         justifyContent="space-between"
       >
-        <Image
-          src={portraitImage}
-          alt="portrait"
-          borderRadius="8%"
+        <Box
           width={isDesktop ? "270px" : "200px"}
+          height="auto"
           zIndex={2}
           shadow="lg"
-        />
+          borderRadius="8%"
+        >
+          <StaticImage
+            src="../../images/portrait.webp"
+            alt="portrait"
+            placeholder="blurred"
+            style={{ borderRadius: "8%" }}
+          />
+        </Box>
         <Flex
           direction="column"
           color={`mode.${colorMode}.text`}
@@ -68,6 +68,7 @@ const About = () => {
             my={5}
             width={isDesktop ? "480px" : "unset"}
             fontFamily="secondary"
+            transform="translateY(-50%)"
             animation={
               inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
             }

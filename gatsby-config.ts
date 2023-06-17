@@ -42,8 +42,17 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: "images",
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+
     "@chakra-ui/gatsby-plugin",
     {
       resolve: "@chakra-ui/gatsby-plugin",

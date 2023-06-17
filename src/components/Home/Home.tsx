@@ -10,6 +10,8 @@ import Heading from "../Heading/Heading";
 import { useTranslation } from "react-i18next";
 import { TypeAnimation } from "react-type-animation";
 import { scaleAnimation } from "../../utils/animations";
+import avatar from "../../images/avatar.webp";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Home = () => {
   const [isDesktop] = useMediaQuery("(min-width: 700px)");
@@ -48,11 +50,11 @@ const Home = () => {
       fontFamily="secondary"
     >
       <Box
-        h={isMobileHorizontal ? 100 : 150}
-        w={isMobileHorizontal ? 100 : 150}
         mb={5}
         mt={10}
         position="relative"
+        h={isMobileHorizontal ? 100 : 150}
+        w={isMobileHorizontal ? 100 : 150}
       >
         {sizes.map((size, index) => (
           <Box
@@ -68,13 +70,10 @@ const Home = () => {
             }}
           ></Box>
         ))}
-        <Image
-          src="https://avatars.githubusercontent.com/u/71847286?s=400&u=2a252326a2369812cf5d04f4d025557981528117&v=4"
+        <StaticImage
+          src="../../images/avatar.webp"
           alt="avatar"
-          objectFit="cover"
-          borderRadius="50%"
-          zIndex={2}
-          position="relative"
+          style={{ borderRadius: "50%" }}
         />
       </Box>
       <TypeAnimation

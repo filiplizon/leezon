@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { Flex, useColorMode } from "@chakra-ui/react";
-import { useMediaQuery } from "@chakra-ui/react";
+import { Flex, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
-import { getProjects } from "../../utils/data/projects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import Button from "../Button/Button";
-import { Project } from "../../utils/types/project";
+import { projects } from "../../utils/data/projects";
 import { useTranslation } from "react-i18next";
 
 const Projects: React.FC = () => {
@@ -16,7 +14,6 @@ const Projects: React.FC = () => {
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showMore, setShowMore] = useState<boolean>(false);
-  const projects = getProjects(t);
   const projectsPerPage: number = 3;
   const totalPages: number = Math.ceil(projects.length / projectsPerPage);
   const maxDisplayedProjects: number = showMore
@@ -35,7 +32,7 @@ const Projects: React.FC = () => {
     ? (currentPage - 1) * projectsPerPage
     : 0;
   const endIndex: number = startIndex + maxDisplayedProjects;
-  const displayedProjects: Project[] = projects.slice(startIndex, endIndex);
+  const displayedProjects: string[] = projects.slice(startIndex, endIndex);
 
   return (
     <Flex
@@ -67,8 +64,8 @@ const Projects: React.FC = () => {
         mb={isDesktop ? 5 : 0}
         maxWidth="1100px"
       >
-        {displayedProjects.map((data: Project) => (
-          <ProjectCard key={data.title} {...data} />
+        {displayedProjects.map((title: string) => (
+          <ProjectCard key={title} title={title} />
         ))}
       </Flex>
       {!isDesktop && (

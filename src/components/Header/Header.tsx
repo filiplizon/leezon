@@ -9,12 +9,13 @@ import { slideToRight } from "../../utils/animations";
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const { colorMode } = useColorMode();
+  const [isDesktop] = useMediaQuery("(min-width: 1000px)");
   const [isMobileHorizontal] = useMediaQuery(
     "screen and (max-width: 950px) and (orientation: landscape)"
   );
 
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuOpen && !isDesktop) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";

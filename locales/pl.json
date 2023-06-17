@@ -219,22 +219,22 @@
             "stack": "Next.js, TS, redux-toolkit, ant design, Rest API",
             "description": "Aplikacja umożliwiająca użytkownikom przeglądanie newsów z różnych krajów świata."
         },
-        "dishes-form": {
+        "dishesForm": {
             "title": "Dishes Form",
             "stack": "Next.js, TS, Tailwind.css, React-final-form",
             "description": "Aplikacja umożliwia użytkownikom tworzenie i przesyłanie informacji o daniu."
         },
-        "country-quiz": {
+        "countryQuiz": {
             "title": "Country Quiz",
             "stack": "React, redux, firebase, Rest API",
             "description": "Aplikacja dostarczająca użytkownikom informacje na temat państw świata z możliwością zagrania w quiz."
         },
-        "what-to-do": {
+        "whatToDo": {
             "title": "What to do",
             "stack": "React, Recoil, Theme UI, Rest API",
             "description": "Aplikacja do zarządzania zadaniami. Użytkownik może dodać, usunąć lub edytować zadania, a także zaznaczyć jako wykonane."
         },
-        "simple-editor": {
+        "simpleEditor": {
             "title": "Simple Editor",
             "stack": "Node.js, Express.js, CSS, JavaScript, Pug",
             "description": "Prosty edytor tekstu z możliwością odczytu i zapisu danych do pliku JSON."
@@ -249,7 +249,7 @@
             "stack": "HTML, SCSS, Javascript",
             "description": "Aplikacja do wymiany walut dla wymyślonej waluty o nazwie 'sasin'."
         },
-        "make-a-burger": {
+        "makeBurger": {
             "title": "Make a burger",
             "stack": "HTML, SCSS, Javascript",
             "description": "Aplikacja symulująca działanie restauracji z burgerami. Użytkownik może stworzyć i zamówić burgera."

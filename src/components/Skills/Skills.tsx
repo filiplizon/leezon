@@ -2,26 +2,20 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
-import { getTechnologies } from "../../utils/data/technologies";
 import SkillCard from "../SkillCard/SkillCard";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../../utils/animations";
 import { useSwipeable } from "react-swipeable";
-
-interface Technology {
-  name: string;
-  description: string;
-  image: string;
-}
+import { technologies } from "../../utils/data/technologies";
 
 const Skills: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
-  const technologies = getTechnologies(t);
-  const [activeTechnology, setActiveTechnology] = useState<Technology>(
+
+  const [activeTechnology, setActiveTechnology] = useState<string>(
     technologies[0]
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -37,7 +31,7 @@ const Skills: React.FC = () => {
 
   useEffect(() => {
     const updatedActiveTechnology = technologies.find(
-      technology => technology.name === activeTechnology.name
+      technology => technology === activeTechnology
     );
     setActiveTechnology(updatedActiveTechnology || technologies[0]);
   }, [t]);
@@ -46,7 +40,7 @@ const Skills: React.FC = () => {
     setCurrentPage(pageNumber);
   };
 
-  const handleTechnologyClick = (technology: Technology): void => {
+  const handleTechnologyClick = (technology: string): void => {
     setActiveTechnology(technology);
   };
 
@@ -129,7 +123,7 @@ const Skills: React.FC = () => {
               fontSize="xl"
               mb={5}
             >
-              {activeTechnology.name}
+              {t(`skills.${activeTechnology}.name`)}
             </Text>
             <Text
               ref={ref}
@@ -139,7 +133,7 @@ const Skills: React.FC = () => {
                 inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
               }
             >
-              {activeTechnology.description}
+              {t(`skills.${activeTechnology}.description`)}
             </Text>
           </Flex>
         </Flex>
@@ -156,11 +150,11 @@ const Skills: React.FC = () => {
         >
           {technologies
             .slice(indexOfFirstTechnology, indexOfLastTechnology)
-            .map((technology: Technology, index: number) => (
+            .map((technology: string, index: number) => (
               <SkillCard
                 key={index}
                 technology={technology}
-                isActive={activeTechnology.name === technology.name}
+                isActive={activeTechnology === technology}
                 onClick={() => handleTechnologyClick(technology)}
               />
             ))}
