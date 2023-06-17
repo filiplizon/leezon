@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Field } from "formik";
 import { useInView } from "react-intersection-observer";
-import { slideFromRight } from "../../utils/animations";
+import { opacityAnimation, slideFromRight } from "../../utils/animations";
 
 interface InputFieldProps {
   name: string;
@@ -54,8 +54,11 @@ const InputField: React.FC<InputFieldProps> = ({
             }}
             id={name}
             placeholder={placeholder}
+            opacity={0}
             animation={
-              inView ? `${slideFromRight} .5s ease-in-out forwards` : "none"
+              inView
+                ? `${opacityAnimation} .5s ease-in-out .2s forwards`
+                : "none"
             }
           />
           <FormErrorMessage>{form.errors[name]}</FormErrorMessage>

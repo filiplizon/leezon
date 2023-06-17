@@ -63,7 +63,7 @@ const SkillCard = ({
         shadow: "lg",
       }}
     >
-      <Box width="100px" height="100px">
+      <Box width={isDesktop ? "100px" : "140px"}>
         {skillIcon.length > 0 && (
           <GatsbyImage image={skillIcon[0]} alt={`${technology} icon`} />
         )}

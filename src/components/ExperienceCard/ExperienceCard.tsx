@@ -10,7 +10,7 @@ import {
 import DottedSquare from "../DottedSquare/DottedSquare";
 import Heading from "../Heading/Heading";
 import { useInView } from "react-intersection-observer";
-import { slideFromBottom } from "../../utils/animations";
+import { opacityAnimation, slideFromBottom } from "../../utils/animations";
 
 interface ExperienceCardProps {
   title: string;
@@ -49,8 +49,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       position="relative"
       pr={10}
       mb={isDesktop ? 0 : 10}
+      opacity={0}
       animation={
-        inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
+        inView ? `${opacityAnimation} .5s ease-in-out forwards` : "none"
       }
     >
       <Heading level="h4" fontSize="xl" mb={2}>

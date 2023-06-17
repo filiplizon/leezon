@@ -54,8 +54,11 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
       position="relative"
       mb={isDesktop ? 0 : 10}
       shadow="md"
+      transform={isDesktop ? "translateY(0)" : "translateY(50%)"}
       animation={
-        inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
+        inView && !isDesktop
+          ? `${slideFromBottom} .5s ease-in-out forwards`
+          : "none"
       }
     >
       <Box

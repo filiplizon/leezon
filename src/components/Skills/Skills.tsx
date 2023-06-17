@@ -129,6 +129,7 @@ const Skills: React.FC = () => {
               ref={ref}
               fontSize="md"
               height={isDesktop ? "120px" : "unset"}
+              transform="translateY(50%)"
               animation={
                 inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
               }
