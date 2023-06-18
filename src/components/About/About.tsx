@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import DottedSquare from "../DottedSquare/DottedSquare";
@@ -7,15 +7,23 @@ import Button from "../Button/Button";
 import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../../utils/animations";
 import { StaticImage } from "gatsby-plugin-image";
+import { lastSingleLetterToNewLine } from "../../utils/helpers";
 
 const About = () => {
   const [isDesktop] = useMediaQuery("(min-width: 800px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
-
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const element = textRef.current;
+      lastSingleLetterToNewLine(element);
+    }
+  }, [t]);
 
   return (
     <Flex
@@ -62,19 +70,20 @@ const About = () => {
           <Heading color={`mode.${colorMode}.text`} level="h3">
             {t("about.heading")}
           </Heading>
-          <Text
-            ref={ref}
-            fontSize="sm"
-            my={5}
-            width={isDesktop ? "480px" : "unset"}
-            fontFamily="secondary"
-            transform="translateY(-50%)"
-            animation={
-              inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
-            }
-          >
-            {t("about.text")}
-          </Text>
+          <Box ref={ref}>
+            <Text
+              ref={textRef}
+              fontSize="sm"
+              my={5}
+              width={isDesktop ? "480px" : "unset"}
+              fontFamily="secondary"
+              transform="translateY(-50%)"
+              animation={
+                inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
+              }
+              dangerouslySetInnerHTML={{ __html: t("about.text") as string }}
+            />
+          </Box>
           <Flex justifyContent={isDesktop ? "unset" : "center"}>
             <Button
               name={t("about.button")}

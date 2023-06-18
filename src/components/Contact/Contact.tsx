@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Box,
   Flex,
@@ -11,11 +11,20 @@ import { useTranslation } from "react-i18next";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import ContactForm from "../Form/Form";
+import { lastSingleLetterToNewLine } from "../../utils/helpers";
 
 const Contact: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const element = textRef.current;
+      lastSingleLetterToNewLine(element);
+    }
+  }, [t]);
 
   return (
     <Flex
@@ -55,7 +64,13 @@ const Contact: React.FC = () => {
           <Heading level="h3" mb={5}>
             {t("contact.heading")}
           </Heading>
-          <Text>{t("contact.description")}</Text>
+          <Text
+            ref={textRef}
+            dangerouslySetInnerHTML={{
+              __html: t("contact.description") as string,
+            }}
+          />
+
           <Text mt={5}>
             {t("contact.phone")}
             <Link href="tel:+48600113271" fontWeight={600}>

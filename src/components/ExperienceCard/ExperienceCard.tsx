@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Flex,
   ListItem,
@@ -10,7 +10,9 @@ import {
 import DottedSquare from "../DottedSquare/DottedSquare";
 import Heading from "../Heading/Heading";
 import { useInView } from "react-intersection-observer";
-import { opacityAnimation, slideFromBottom } from "../../utils/animations";
+import { opacityAnimation } from "../../utils/animations";
+import { lastSingleLetterToNewLine } from "../../utils/helpers";
+import { useTranslation } from "react-i18next";
 
 interface ExperienceCardProps {
   title: string;
@@ -29,9 +31,19 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 }) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
+  const { t } = useTranslation();
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
+  const descriptionRefs = useRef<Array<HTMLLIElement | null>>([]);
+
+  useEffect(() => {
+    descriptionRefs.current.forEach(element => {
+      if (element) {
+        lastSingleLetterToNewLine(element);
+      }
+    });
+  }, [descriptionRefs, t]);
 
   return (
     <Flex
@@ -69,9 +81,12 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         fontSize={isDesktop ? "md" : "md"}
       >
         {description.map((item, index) => (
-          <ListItem key={index} mb={2}>
-            {item}
-          </ListItem>
+          <ListItem
+            key={index}
+            mb={2}
+            dangerouslySetInnerHTML={{ __html: item }}
+            ref={el => (descriptionRefs.current[index] = el ?? null)}
+          />
         ))}
       </UnorderedList>
       <DottedSquare

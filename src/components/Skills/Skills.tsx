@@ -1,5 +1,5 @@
-import React, { useState, useMemo, useEffect } from "react";
-import { Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import DottedSquare from "../DottedSquare/DottedSquare";
 import SkillCard from "../SkillCard/SkillCard";
@@ -9,11 +9,13 @@ import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../../utils/animations";
 import { useSwipeable } from "react-swipeable";
 import { technologies } from "../../utils/data/technologies";
+import { lastSingleLetterToNewLine } from "../../utils/helpers";
 
 const Skills: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+  const textRef = useRef<HTMLDivElement>(null);
 
   const [activeTechnology, setActiveTechnology] = useState<string>(
     technologies[0]
@@ -35,6 +37,13 @@ const Skills: React.FC = () => {
     );
     setActiveTechnology(updatedActiveTechnology || technologies[0]);
   }, [t]);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const element = textRef.current;
+      lastSingleLetterToNewLine(element);
+    }
+  }, [t, activeTechnology]);
 
   const handlePageClick = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
@@ -125,17 +134,22 @@ const Skills: React.FC = () => {
             >
               {t(`skills.${activeTechnology}.name`)}
             </Text>
-            <Text
-              ref={ref}
-              fontSize="md"
-              height={isDesktop ? "120px" : "unset"}
-              transform="translateY(50%)"
-              animation={
-                inView ? `${slideFromBottom} .5s ease-in-out forwards` : "none"
-              }
-            >
-              {t(`skills.${activeTechnology}.description`)}
-            </Text>
+            <Box ref={ref}>
+              <Text
+                ref={textRef}
+                fontSize="md"
+                height={isDesktop ? "120px" : "unset"}
+                transform="translateY(50%)"
+                animation={
+                  inView
+                    ? `${slideFromBottom} .5s ease-in-out forwards`
+                    : "none"
+                }
+                dangerouslySetInnerHTML={{
+                  __html: t(`skills.${activeTechnology}.description`) as string,
+                }}
+              />
+            </Box>
           </Flex>
         </Flex>
         <Flex

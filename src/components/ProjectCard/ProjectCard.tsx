@@ -8,6 +8,8 @@ import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../../utils/animations";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { useEffect, useRef } from "react";
+import { lastSingleLetterToNewLine } from "../../utils/helpers";
 
 const ProjectCard: React.FC<Project> = ({ title }) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
@@ -17,6 +19,14 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
     triggerOnce: true,
   });
   const buttonWidth = "48%";
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const element = textRef.current;
+      lastSingleLetterToNewLine(element);
+    }
+  }, [t]);
 
   const data = useStaticQuery(graphql`
     query ProjectImage {
@@ -88,12 +98,14 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
           {t(`projects.${title}.stack`)}
         </Text>
         <Text
+          ref={textRef}
           fontFamily="secondary"
           h={isDesktop ? "65px" : "unset"}
           fontSize={isDesktop ? 14 : 16}
-        >
-          {t(`projects.${title}.description`)}
-        </Text>
+          dangerouslySetInnerHTML={{
+            __html: t(`projects.${title}.description`) as string,
+          }}
+        />
         <Flex width="100%" mt={5} justifyContent="space-between">
           <Button
             name={t("projects.buttons.live")}
