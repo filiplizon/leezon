@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Karla";
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url(/fonts/Karla.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Prompt";
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url(/fonts/Prompt.woff2) format("woff2");
+}
