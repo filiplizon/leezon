@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     title: `Leezon Portfolio`,
     description: ``,
     image: `/icon.png`,
-    siteUrl: `https://www.leezon.pl`,
+    siteUrl: `https://leezon.gatsbyjs.io/`,
   },
   graphqlTypegen: true,
   plugins: [
@@ -32,7 +32,6 @@ const config: GatsbyConfig = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-
     "@chakra-ui/gatsby-plugin",
     {
       resolve: "@chakra-ui/gatsby-plugin",

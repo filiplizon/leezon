@@ -1,25 +1,23 @@
 import React from "react";
-import { Flex, Text, useMediaQuery, useColorMode, Box } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { useTranslation } from "react-i18next";
+import { Flex, Text, useMediaQuery, useColorMode, Box } from "@chakra-ui/react";
 
-const SkillCard = ({
-  technology,
-  isActive,
-  onClick,
-}: {
-  technology: string;
+interface SkillCardProps {
+  skill: string;
   isActive: boolean;
   onClick: () => void;
-}) => {
+}
+
+const SkillCard = ({ skill, isActive, onClick }: SkillCardProps) => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
 
   const data = useStaticQuery(graphql`
     query SkillIcon {
-      allFile {
+      allFile(filter: { relativePath: { regex: "/skills/" } }) {
         edges {
           node {
             relativePath
@@ -33,10 +31,7 @@ const SkillCard = ({
   `);
 
   const skillIcon = data.allFile.edges
-    .filter((edge: any) => {
-      const path = edge.node.relativePath;
-      return path === `skills/${technology}.webp`;
-    })
+    .filter((edge: any) => edge.node.relativePath === `skills/${skill}.webp`)
     .map((edge: any) => getImage(edge.node.childImageSharp.gatsbyImageData));
 
   return (
@@ -44,16 +39,16 @@ const SkillCard = ({
       as="a"
       href={`#${t("navigation.skills.link")}`}
       width={isDesktop ? "30%" : "45%"}
+      p={2}
       mb={8}
       textAlign="center"
-      p={2}
-      flexDirection="column"
+      direction="column"
       alignItems="center"
       bg={`mode.${colorMode}.background`}
-      borderRadius={10}
-      border="1px solid transparent"
-      borderColor={isActive ? `mode.${colorMode}.text` : "transparent"}
       color={isActive ? `mode.${colorMode}.text` : `mode.${colorMode}.gray`}
+      borderRadius={10}
+      border="1px solid"
+      borderColor={isActive ? `mode.${colorMode}.text` : "transparent"}
       cursor="pointer"
       shadow={isActive ? "lg" : "none"}
       onClick={onClick}
@@ -65,11 +60,11 @@ const SkillCard = ({
     >
       <Box width={isDesktop ? "100px" : "140px"}>
         {skillIcon.length > 0 && (
-          <GatsbyImage image={skillIcon[0]} alt={`${technology} icon`} />
+          <GatsbyImage image={skillIcon[0]} alt={`${skill} icon`} />
         )}
       </Box>
       <Text fontFamily="secondary" mt={2}>
-        {t(`skills.${technology}.name`)}
+        {t(`skills.${skill}.name`)}
       </Text>
     </Flex>
   );

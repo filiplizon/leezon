@@ -33,8 +33,8 @@ const Button = ({
   download,
   name,
 }: ButtonProps) => {
-  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
@@ -47,29 +47,28 @@ const Button = ({
       type={type}
       href={href}
       ref={ref}
-      textAlign="center"
-      borderRadius={30}
-      py={py}
+      download={download}
       w={width}
+      py={py}
+      mt={mt}
+      bg="transparent"
+      textAlign="center"
+      color={`mode.${colorMode}.text`}
       fontFamily="secondary"
       fontSize={isDesktop ? 14 : 18}
       letterSpacing={1}
-      color={`mode.${colorMode}.text`}
-      bg="transparent"
+      textTransform="uppercase"
+      borderRadius={30}
       border="1px solid"
       borderColor={`mode.${colorMode}.gray`}
-      textTransform="uppercase"
-      fontWeight={400}
       shadow="base"
-      mt={mt}
+      onClick={onClick}
       animation={
         inView ? `${opacityAnimation} .5s ease-in-out forwards` : "none"
       }
       _hover={{
         borderColor: `mode.${colorMode}.text`,
       }}
-      onClick={onClick}
-      download={download}
     >
       {children}
     </ButtonComponent>

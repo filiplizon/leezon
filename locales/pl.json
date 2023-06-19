@@ -79,7 +79,7 @@
             "school": "WYŻSZA SZKOŁA INFORMATYKI I ZARZĄDZANIA 'COPERNICUS'",
             "degree": "Inżynier, Informatyka",
             "date": "10.2017 - 03.2022",
-            "responsibilities": {
+            "subject": {
                 "1": "Programowanie (Java, C++, C#, Javascript)",
                 "2": "Bazy danych (SQL)",
                 "3": "Projektowanie oprogramowania",
@@ -215,7 +215,7 @@
             "seeLess": "zobacz mniej"
         },
         "flNews": {
-            "title": "flNews",
+            "title": "FL News",
             "stack": "Next.js, TS, redux-toolkit, ant design, Rest API",
             "description": "Aplikacja umożliwiająca użytkownikom przeglądanie newsów z różnych krajów świata."
         },
@@ -298,5 +298,10 @@
     "socialLinks": {
         "github": "https://github.com/filiplizon",
         "linkedin": "https://www.linkedin.com/in/filip-lizon/"
+    },
+    "404": {
+        "404": "404",
+        "message": "nie znaleziono strony",
+        "home": "powrót na strone główną"
     }
 }

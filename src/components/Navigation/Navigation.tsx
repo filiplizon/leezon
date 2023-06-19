@@ -1,24 +1,24 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
+import React, { useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery, Flex, useColorMode } from "@chakra-ui/react";
 import NavLink from "../NavLink/NavLink";
-import { getLinks } from "../../utils/data/navigation";
+import { links } from "../../utils/data/navigation";
+import { useNavigationLinksEffect } from "../../utils/helpers/hooks";
+import { updateActiveNavigationLink } from "../../utils/helpers/helpers";
 
-const Navigation = ({
-  isMenuOpen,
-  setMenuOpen,
-}: {
+interface NavigationProps {
   isMenuOpen: boolean;
   setMenuOpen: (isOpen: boolean) => void;
-}) => {
-  const { t, i18n } = useTranslation();
-  const links = getLinks(t);
-  const [activeLink, setActiveLink] = useState("home");
+}
+
+const Navigation = ({ isMenuOpen, setMenuOpen }: NavigationProps) => {
+  const { colorMode } = useColorMode();
+  const { t } = useTranslation();
   const [isDesktop] = useMediaQuery("(min-width: 1000px)");
   const [isMobileHorizontal] = useMediaQuery(
     "screen and (max-width: 950px) and (orientation: landscape)"
   );
-  const { colorMode } = useColorMode();
+  const [activeLink, setActiveLink] = useState("home");
   const [scrollEventEnabled, setScrollEventEnabled] = useState(true);
 
   const handleLinkClick = useCallback(
@@ -34,53 +34,25 @@ const Navigation = ({
   );
 
   const updateActiveLink = useCallback(() => {
-    if (!scrollEventEnabled) {
-      return;
-    }
-
-    const sectionElements = Array.from(
-      document.querySelectorAll("section[id]")
-    ) as HTMLElement[];
-
-    for (let i = sectionElements.length - 1; i >= 0; i--) {
-      const section = sectionElements[i];
-      const rect = section.getBoundingClientRect();
-
-      if (rect.top <= 100 && rect.bottom >= 100) {
-        setActiveLink(section.id);
-        break;
-      }
-    }
+    updateActiveNavigationLink(scrollEventEnabled, setActiveLink);
   }, [scrollEventEnabled]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", updateActiveLink);
-    i18n.on("languageChanged", updateActiveLink);
-
-    return () => {
-      window.removeEventListener("scroll", updateActiveLink);
-      i18n.off("languageChanged", updateActiveLink);
-    };
-  }, [i18n, updateActiveLink]);
-
-  useEffect(() => {
-    updateActiveLink();
-  }, [updateActiveLink, i18n.language]);
+  useNavigationLinksEffect(updateActiveLink);
 
   return (
     <>
       <Flex
-        pb={isDesktop ? 0 : isMobileHorizontal ? 75 : 160}
-        pt={isDesktop ? 0 : isMobileHorizontal ? 10 : 100}
         as="nav"
+        width={isDesktop ? "unset" : "100%"}
+        height={isDesktop ? "unset" : "90vh"}
+        pb={isDesktop ? 0 : isMobileHorizontal ? 100 : 180}
+        pt={isDesktop ? 0 : isMobileHorizontal ? 5 : 100}
+        position={isDesktop ? "relative" : "absolute"}
         top={isDesktop ? 0 : "10vh"}
         left={0}
-        position={isDesktop ? "relative" : "absolute"}
-        height={isDesktop ? "unset" : "90vh"}
-        width={isDesktop ? "unset" : "100%"}
+        direction={isDesktop ? "row" : "column"}
         alignItems="center"
         justifyContent="space-between"
-        flexDirection={isDesktop ? "row" : "column"}
         background={isDesktop ? "transparent" : `mode.${colorMode}.background`}
         fontSize={isDesktop ? 14 : isMobileHorizontal ? 10 : 20}
         textTransform="uppercase"
@@ -89,14 +61,14 @@ const Navigation = ({
         }
         transition="transform .5s ease-in-out"
       >
-        {links.map(({ name, link }) => (
+        {links.map((link: string) => (
           <NavLink
             key={link}
-            href={`#${link}`}
-            isActive={activeLink === link}
-            onClick={() => handleLinkClick(link)}
+            href={`#${t(`navigation.${link}.link`)}`}
+            isActive={activeLink === t(`navigation.${link}.link`)}
+            onClick={() => handleLinkClick(t(`navigation.${link}.link`))}
           >
-            {name}
+            {t(`navigation.${link}.label`)}
           </NavLink>
         ))}
       </Flex>

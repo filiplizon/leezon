@@ -79,7 +79,7 @@
             "school": "WYŻSZA SZKOŁA INFORMATYKI I ZARZĄDZANIA 'COPERNICUS'",
             "degree": "Bachelor of engineering, Computer Science",
             "date": "10.2017 - 03.2022",
-            "responsibilities": {
+            "subject": {
                 "1": "Programming (Java, C++, C#, JavaScript)",
                 "2": "Databases (SQL)",
                 "3": "Software Design",
@@ -215,7 +215,7 @@
             "seeLess": "see less"
         },
         "flNews": {
-            "title": "flNews",
+            "title": "FL News",
             "stack": "Next.js, TS, redux-toolkit, ant design, Rest API",
             "description": "An application that allows users to browse news from different countries around the world."
         },
@@ -298,5 +298,10 @@
     "socialLinks": {
         "github": "https://github.com/filiplizon",
         "linkedin": "https://www.linkedin.com/in/filip-lizon/"
+    },
+    "404": {
+        "404": "404",
+        "message": "page not found",
+        "home": "go back home"
     }
 }

@@ -1,4 +1,4 @@
-export const technologies = [
+export const skills = [
   "javascript",
   "typescript",
   "react",

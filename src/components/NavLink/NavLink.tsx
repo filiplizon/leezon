@@ -15,23 +15,20 @@ const NavLink = ({ children, href, isActive, onClick }: NavLinkProps) => {
   return (
     <Link
       href={href}
-      position="relative"
       px={isDesktop ? 4 : 8}
       py={isDesktop ? 1 : 2}
       mr={2}
       mb={isDesktop ? 0 : 2}
-      borderRadius={30}
       fontFamily="secondary"
       letterSpacing={2}
       color={`mode.${colorMode}.text`}
       border="1px solid transparent"
       borderColor={isActive ? `mode.${colorMode}.text` : "transparent"}
+      borderRadius={30}
+      onClick={onClick}
       _hover={{
-        textDecoration: "none",
-        color: `mode.${colorMode}.text`,
         borderColor: `mode.${colorMode}.text`,
       }}
-      onClick={onClick}
     >
       {children}
     </Link>

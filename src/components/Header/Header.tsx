@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { useLocation } from "@reach/router";
 import { Box, Flex, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
@@ -7,12 +8,15 @@ import Menu from "../Menu/Menu";
 import { slideToRight } from "../../utils/animations";
 
 const Header = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
   const { colorMode } = useColorMode();
   const [isDesktop] = useMediaQuery("(min-width: 1000px)");
   const [isMobileHorizontal] = useMediaQuery(
     "screen and (max-width: 950px) and (orientation: landscape)"
   );
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const { pathname, hash } = location;
+  const isHome = pathname === "/" || hash !== "";
 
   useEffect(() => {
     if (isMenuOpen && !isDesktop) {
@@ -25,34 +29,40 @@ const Header = () => {
   return (
     <Flex
       as="header"
+      width="100%"
+      h={isMobileHorizontal ? "15vh" : "10vh"}
+      px={5}
+      position="fixed"
+      top="0"
+      justifyContent="center"
       bgColor={`mode.${colorMode}.background`}
       borderBottom="1px solid"
       borderBottomColor={`mode.${colorMode}.gray`}
-      position="fixed"
-      top="0"
-      width="100%"
       zIndex={10}
-      px={5}
-      h={isMobileHorizontal ? "15vh" : "10vh"}
-      justifyContent="center"
     >
       <Box
         w="100%"
-        height="110%"
+        height="105%"
         position="absolute"
         bgColor={`mode.${colorMode}.background`}
         zIndex={1000}
         animation={`${slideToRight} .8s ease-in-out .7s forwards`}
-      ></Box>
+      />
       <Flex
+        width="100%"
+        maxWidth="1400px"
         justifyContent="space-between"
         alignItems="center"
-        maxWidth="1400px"
-        width="100%"
       >
         <Logo />
-        <Navigation isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
-        <Menu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
+        {isHome && (
+          <Navigation isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
+        )}
+        <Menu
+          isMenuOpen={isMenuOpen}
+          setMenuOpen={setMenuOpen}
+          isHome={isHome}
+        />
       </Flex>
     </Flex>
   );

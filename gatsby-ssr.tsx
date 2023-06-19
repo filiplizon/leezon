@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+export { wrapPageElement } from "./gatsby-browser";
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([

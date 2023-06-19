@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Flex,
@@ -7,42 +8,36 @@ import {
   useColorMode,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { useTranslation } from "react-i18next";
 import Heading from "../Heading/Heading";
-import DottedSquare from "../DottedSquare/DottedSquare";
+import DottedElement from "../DottedElement/DottedElement";
 import ContactForm from "../Form/Form";
-import { lastSingleLetterToNewLine } from "../../utils/helpers";
+import { useLastSingleLetterToNewLine } from "../../utils/helpers/hooks";
 
 const Contact: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
-  const textRef = useRef<HTMLParagraphElement>(null);
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
 
-  useEffect(() => {
-    if (textRef.current) {
-      const element = textRef.current;
-      lastSingleLetterToNewLine(element);
-    }
-  }, [t]);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  useLastSingleLetterToNewLine(textRef);
 
   return (
     <Flex
       as="section"
       id={t("contact.id") as string}
+      minH="90vh"
+      pt={isDesktop ? "10vh" : "12vh"}
+      pb={"11vh"}
+      px={5}
+      position="relative"
+      justifyContent="center"
+      alignItems="center"
       bg={
         isDesktop
           ? `mode.${colorMode}.secondary`
           : `mode.${colorMode}.background`
       }
       color={`mode.${colorMode}.text`}
-      minH="90vh"
-      pb={"11vh"}
-      pt={isDesktop ? "10vh" : "12vh"}
-      px={5}
-      justifyContent="center"
-      alignItems="center"
-      position="relative"
       _before={{
         content: '""',
         position: "absolute",
@@ -53,12 +48,12 @@ const Contact: React.FC = () => {
         background: `mode.${colorMode}.background`,
       }}
     >
-      <Flex flexDirection={isDesktop ? "row" : "column"} maxW="1100px">
+      <Flex direction={isDesktop ? "row" : "column"} maxW="1100px">
         <Flex
-          flexDirection="column"
           width={isDesktop ? "50%" : "100%"}
           position="relative"
           pr={10}
+          direction="column"
           fontFamily="secondary"
         >
           <Heading level="h3" mb={5}>
@@ -85,7 +80,7 @@ const Contact: React.FC = () => {
           </Text>
           {!isDesktop && <Text>{t("contact.fillForm")}</Text>}
           {isDesktop && (
-            <DottedSquare
+            <DottedElement
               width="200px"
               height="200px"
               position="relative"
@@ -95,10 +90,10 @@ const Contact: React.FC = () => {
           )}
         </Flex>
         <Box
+          width={isDesktop ? "40%" : "100%"}
           mt={isDesktop ? 0 : 5}
           ml={isDesktop ? 10 : 0}
           fontFamily="secondary"
-          width={isDesktop ? "40%" : "100%"}
         >
           <ContactForm />
         </Box>

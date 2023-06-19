@@ -1,25 +1,26 @@
 import * as React from "react";
 import { Box } from "@chakra-ui/react";
-import theme from "../../theme/theme";
-interface DottedSquareProps {
+import theme from "../../styles/theme";
+
+interface DottedElementProps {
+  width?: string;
+  height?: string;
   position?: "absolute" | "relative";
   top?: string;
   left?: string;
   right?: string;
   bottom?: string;
-  width?: string;
-  height?: string;
 }
 
-const DottedSquare = ({
+const DottedElement = ({
+  width,
+  height,
   position = "absolute",
   top,
   left,
   right,
   bottom,
-  width,
-  height,
-}: DottedSquareProps) => {
+}: DottedElementProps) => {
   const dotColor = theme.colors.mode.dark.gray;
 
   return (
@@ -46,4 +47,4 @@ const DottedSquare = ({
   );
 };
 
-export default DottedSquare;
+export default DottedElement;

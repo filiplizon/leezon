@@ -15,3 +15,7 @@
   font-named-instance: "Regular";
   src: url(/fonts/Prompt.woff2) format("woff2");
 }
+
+html {
+  scroll-behavior: smooth;
+}

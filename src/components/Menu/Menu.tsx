@@ -1,37 +1,36 @@
-import * as React from "react";
+import React, { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { Flex, Button, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import { CiLight, CiDark } from "react-icons/ci";
-import { useTranslation } from "react-i18next";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import IconButton from "../IconButton/IconButton";
-
+import { changeLanguage } from "../../utils/helpers/helpers";
 interface MenuProps {
   isMenuOpen: boolean;
   setMenuOpen: (isOpen: boolean) => void;
+  isHome?: boolean;
 }
 
-const Menu = ({ isMenuOpen, setMenuOpen }: MenuProps) => {
+const Menu = ({ isMenuOpen, setMenuOpen, isHome }: MenuProps) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { i18n, t } = useTranslation();
   const [isDesktop] = useMediaQuery("(min-width: 1000px)");
 
-  const changeLanguage = () => {
-    const currentLanguage = i18n.language;
-    const newLanguage = currentLanguage === "en" ? "pl" : "en";
-    i18n.changeLanguage(newLanguage);
-  };
+  const handleChangeLanguage = useCallback(() => {
+    changeLanguage(i18n);
+  }, [i18n]);
 
   return (
     <Flex
-      color={`mode.${colorMode}.text`}
       alignItems="center"
       justifyContent={isDesktop ? "space-between" : "flex-end"}
+      color={`mode.${colorMode}.text`}
     >
       <Button
         p={0}
         bg="transparent"
         fontSize={22}
-        onClick={changeLanguage}
+        onClick={handleChangeLanguage}
         _hover={{
           transform: isDesktop ? "translateY(-10%)" : "none",
         }}
@@ -42,13 +41,13 @@ const Menu = ({ isMenuOpen, setMenuOpen }: MenuProps) => {
         {t("changeLanguageButton")}
       </Button>
       <IconButton
+        isDesktop={isDesktop}
         ariaLabel="change theme"
         icon={colorMode === "dark" ? <CiLight /> : <CiDark />}
         onClick={toggleColorMode}
-        isDesktop={isDesktop}
       />
       <IconButton
-        display={isDesktop ? "none" : "flex"}
+        display={isDesktop || !isHome ? "none" : "flex"}
         ariaLabel="expand menu"
         icon={<HiOutlineMenuAlt3 />}
         onClick={() => {

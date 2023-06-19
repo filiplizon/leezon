@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Flex,
   ListItem,
@@ -7,18 +8,19 @@ import {
   useColorMode,
   useMediaQuery,
 } from "@chakra-ui/react";
-import DottedSquare from "../DottedSquare/DottedSquare";
-import Heading from "../Heading/Heading";
 import { useInView } from "react-intersection-observer";
+import DottedElement from "../DottedElement/DottedElement";
+import Heading from "../Heading/Heading";
+import { lastSingleLetterToNewLine } from "../../utils/helpers/helpers";
 import { opacityAnimation } from "../../utils/animations";
-import { lastSingleLetterToNewLine } from "../../utils/helpers";
-import { useTranslation } from "react-i18next";
 
 interface ExperienceCardProps {
-  title: string;
-  company: string;
+  title?: string;
+  company?: string;
   date: string;
   description: string[];
+  degree?: string;
+  school?: string;
   width?: string;
 }
 
@@ -27,16 +29,18 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   company,
   date,
   description,
+  school,
+  degree,
   width,
 }) => {
-  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
-  const descriptionRefs = useRef<Array<HTMLLIElement | null>>([]);
 
+  const descriptionRefs = useRef<Array<HTMLLIElement | null>>([]);
   useEffect(() => {
     descriptionRefs.current.forEach(element => {
       if (element) {
@@ -67,10 +71,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       }
     >
       <Heading level="h4" fontSize="xl" mb={2}>
-        {title}
+        {title || school}
       </Heading>
       <Heading level="h4" fontSize="xl">
-        {company}
+        {company || degree}
       </Heading>
       <Text my={2} fontSize="md">
         {date}
@@ -89,7 +93,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           />
         ))}
       </UnorderedList>
-      <DottedSquare
+      <DottedElement
         right="0"
         top="0"
         width={isDesktop ? "40px" : "25px"}

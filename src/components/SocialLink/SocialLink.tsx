@@ -5,7 +5,7 @@ import { Box } from "@chakra-ui/react";
 interface SocialLinkProps {
   link: string;
   isDesktop: boolean;
-  icon: any;
+  icon: React.ReactNode;
   name: string;
 }
 

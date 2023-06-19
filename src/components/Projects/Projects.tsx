@@ -1,24 +1,29 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Flex, useColorMode, useMediaQuery } from "@chakra-ui/react";
 import Heading from "../Heading/Heading";
 import ProjectCard from "../ProjectCard/ProjectCard";
-import DottedSquare from "../DottedSquare/DottedSquare";
+import DottedElement from "../DottedElement/DottedElement";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import Button from "../Button/Button";
 import { projects } from "../../utils/data/projects";
-import { useTranslation } from "react-i18next";
 
 const Projects: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showMore, setShowMore] = useState<boolean>(false);
-  const projectsPerPage: number = 3;
+  const projectsPerPage: number = isDesktop ? 3 : 4;
   const totalPages: number = Math.ceil(projects.length / projectsPerPage);
   const maxDisplayedProjects: number = showMore
     ? projects.length
     : projectsPerPage;
+  const startIndex: number = isDesktop
+    ? (currentPage - 1) * projectsPerPage
+    : 0;
+  const endIndex: number = startIndex + maxDisplayedProjects;
+  const displayedProjects: string[] = projects.slice(startIndex, endIndex);
 
   const handlePageClick = (pageNumber: number): void =>
     setCurrentPage(pageNumber);
@@ -28,41 +33,33 @@ const Projects: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const startIndex: number = isDesktop
-    ? (currentPage - 1) * projectsPerPage
-    : 0;
-  const endIndex: number = startIndex + maxDisplayedProjects;
-  const displayedProjects: string[] = projects.slice(startIndex, endIndex);
-
   return (
     <Flex
       as="section"
       id={t("projects.id") as string}
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
+      direction="column"
       minH="100vh"
-      bg={`mode.${colorMode}.secondary`}
       pt={isDesktop ? "10vh" : "14vh"}
       pb={10}
       position="relative"
+      alignItems="center"
+      justifyContent="center"
+      bg={`mode.${colorMode}.secondary`}
     >
-      <DottedSquare
+      <DottedElement
         width="200px"
         height={isDesktop ? "200px" : "100px"}
         top="10px"
         right="0"
       />
-      <Heading color={`mode.${colorMode}.text`} level="h3">
-        {t("projects.heading")}
-      </Heading>
+      <Heading level="h3">{t("projects.heading")}</Heading>
       <Flex
-        flexDirection={isDesktop ? "row" : "column"}
-        justifyContent="space-around"
-        alignItems="center"
+        maxWidth="1100px"
+        direction={isDesktop ? "row" : "column"}
         mt={10}
         mb={isDesktop ? 5 : 0}
-        maxWidth="1100px"
+        justifyContent="space-around"
+        alignItems="center"
       >
         {displayedProjects.map((title: string) => (
           <ProjectCard key={title} title={title} />

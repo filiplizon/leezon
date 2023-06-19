@@ -1,4 +1,6 @@
 import React from "react";
+import { Field } from "formik";
+import { useInView } from "react-intersection-observer";
 import {
   FormControl,
   FormLabel,
@@ -7,9 +9,7 @@ import {
   Textarea,
   useColorMode,
 } from "@chakra-ui/react";
-import { Field } from "formik";
-import { useInView } from "react-intersection-observer";
-import { opacityAnimation, slideFromRight } from "../../utils/animations";
+import { opacityAnimation } from "../../utils/animations";
 
 interface InputFieldProps {
   name: string;
@@ -33,7 +33,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
   return (
     <Field name={name}>
-      {({ field, form }) => (
+      {({ field, form }: any) => (
         <FormControl isInvalid={form.errors[name] && form.touched[name]} mb={5}>
           <FormLabel htmlFor={name}>{label}</FormLabel>
           <InputComponent

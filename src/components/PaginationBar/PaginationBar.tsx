@@ -15,25 +15,26 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   handlePageClick,
 }) => {
   const { colorMode } = useColorMode();
+
   return (
     <Flex>
       {Array.from({ length: totalPages }, (_, i: number) => (
         <Box
-          aria-label={`page ${i + 1}`}
-          key={i}
           as="button"
-          borderRadius="full"
-          bg={i + 1 === currentPage ? `mode.${colorMode}.text` : "transparent"}
-          border={i + 1 === currentPage ? "none" : "1px solid"}
-          borderColor={
-            i + 1 === currentPage ? "none" : `mode.${colorMode}.text`
-          }
+          key={i}
+          aria-label={`page ${i + 1}`}
           width={isDesktop ? "10px" : "20px"}
           height={isDesktop ? "10px" : "20px"}
           mt="10px"
           mx="5px"
-          onClick={() => handlePageClick(i + 1)}
+          bg={i + 1 === currentPage ? `mode.${colorMode}.text` : "transparent"}
+          borderRadius="full"
+          border={i + 1 === currentPage ? "none" : "1px solid"}
+          borderColor={
+            i + 1 === currentPage ? "none" : `mode.${colorMode}.text`
+          }
           cursor="pointer"
+          onClick={() => handlePageClick(i + 1)}
         />
       ))}
     </Flex>

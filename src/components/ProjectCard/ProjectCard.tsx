@@ -1,36 +1,29 @@
-import * as React from "react";
-import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
-import Heading from "../Heading/Heading";
-import Button from "../Button/Button";
-import { Project } from "../../utils/types/project";
-import { useTranslation } from "react-i18next";
-import { useInView } from "react-intersection-observer";
-import { slideFromBottom } from "../../utils/animations";
+import React, { useRef } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { useEffect, useRef } from "react";
-import { lastSingleLetterToNewLine } from "../../utils/helpers";
+import { useTranslation } from "react-i18next";
+import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
+import Heading from "../Heading/Heading";
+import Button from "../Button/Button";
+import { useLastSingleLetterToNewLine } from "../../utils/helpers/hooks";
+import { slideFromBottom } from "../../utils/animations";
 
-const ProjectCard: React.FC<Project> = ({ title }) => {
-  const [isDesktop] = useMediaQuery("(min-width: 821px)");
+const ProjectCard = ({ title }: { title: string }) => {
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
   const buttonWidth = "48%";
-  const textRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (textRef.current) {
-      const element = textRef.current;
-      lastSingleLetterToNewLine(element);
-    }
-  }, [t]);
+  const textRef = useRef<HTMLDivElement>(null);
+  useLastSingleLetterToNewLine(textRef);
 
   const data = useStaticQuery(graphql`
     query ProjectImage {
-      allFile {
+      allFile(filter: { relativePath: { regex: "/projects/" } }) {
         edges {
           node {
             relativePath
@@ -44,25 +37,22 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
   `);
 
   const projectImage = data.allFile.edges
-    .filter((edge: any) => {
-      const path = edge.node.relativePath;
-      return path === `projects/${title}.webp`;
-    })
+    .filter((edge: any) => edge.node.relativePath === `projects/${title}.webp`)
     .map((edge: any) => getImage(edge.node.childImageSharp.gatsbyImageData));
 
   return (
     <Flex
       ref={ref}
-      flexDirection="column"
-      bg={`mode.${colorMode}.background`}
+      w={isDesktop ? "31%" : "90%"}
       pb={5}
+      mb={isDesktop ? 0 : 10}
+      position="relative"
+      direction="column"
+      bg={`mode.${colorMode}.background`}
       color={`mode.${colorMode}.text`}
       fontFamily="secondary"
       borderRadius={10}
-      w={isDesktop ? "31%" : "90%"}
       zIndex="5"
-      position="relative"
-      mb={isDesktop ? 0 : 10}
       shadow="md"
       transform={isDesktop ? "translateY(0)" : "translateY(50%)"}
       animation={
@@ -73,10 +63,10 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
     >
       <Box
         height="50%"
+        mb={5}
         borderBottom="1px solid"
         borderBottomColor={`mode.${colorMode}.gray`}
         borderTopRadius={10}
-        mb={5}
       >
         {projectImage[0] && (
           <GatsbyImage
@@ -99,8 +89,8 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
         </Text>
         <Text
           ref={textRef}
-          fontFamily="secondary"
           h={isDesktop ? "65px" : "unset"}
+          fontFamily="secondary"
           fontSize={isDesktop ? 14 : 16}
           dangerouslySetInnerHTML={{
             __html: t(`projects.${title}.description`) as string,
@@ -109,19 +99,19 @@ const ProjectCard: React.FC<Project> = ({ title }) => {
         <Flex width="100%" mt={5} justifyContent="space-between">
           <Button
             name={t("projects.buttons.live")}
-            isLink
             href={t(`projects.${title}.liveURL`) as string}
-            py={2}
+            isLink
             width={buttonWidth}
+            py={2}
           >
             {t("projects.buttons.live")}
           </Button>
           <Button
             name={t("projects.buttons.github")}
-            isLink
             href={t(`projects.${title}.githubURL`) as string}
-            py={2}
+            isLink
             width={buttonWidth}
+            py={2}
           >
             {t("projects.buttons.github")}
           </Button>

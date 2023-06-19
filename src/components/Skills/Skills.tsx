@@ -1,61 +1,49 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { Box, Flex, Text, useColorMode, useMediaQuery } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
+import { useSwipeable } from "react-swipeable";
 import Heading from "../Heading/Heading";
-import DottedSquare from "../DottedSquare/DottedSquare";
+import DottedElement from "../DottedElement/DottedElement";
 import SkillCard from "../SkillCard/SkillCard";
 import PaginationBar from "../PaginationBar/PaginationBar";
-import { useTranslation } from "react-i18next";
-import { useInView } from "react-intersection-observer";
+import { skills } from "../../utils/data/skills";
+import { useLastSingleLetterToNewLine } from "../../utils/helpers/hooks";
 import { slideFromBottom } from "../../utils/animations";
-import { useSwipeable } from "react-swipeable";
-import { technologies } from "../../utils/data/technologies";
-import { lastSingleLetterToNewLine } from "../../utils/helpers";
 
 const Skills: React.FC = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const { colorMode } = useColorMode();
   const { t } = useTranslation();
-  const textRef = useRef<HTMLDivElement>(null);
-
-  const [activeTechnology, setActiveTechnology] = useState<string>(
-    technologies[0]
-  );
+  const [isDesktop] = useMediaQuery("(min-width: 821px)");
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+  });
+  const [activeSkill, setActiveSkill] = useState<string>(skills[0]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const technologiesPerPage: number = isDesktop ? 9 : 6;
-  const indexOfLastTechnology: number = currentPage * technologiesPerPage;
-  const indexOfFirstTechnology: number =
-    indexOfLastTechnology - technologiesPerPage;
+  const skillsPerPage: number = isDesktop ? 9 : 6;
+  const indexOfLastSkill: number = currentPage * skillsPerPage;
+  const indexOfFirstSkill: number = indexOfLastSkill - skillsPerPage;
 
   const totalPages: number = useMemo(
-    () => Math.ceil(technologies.length / technologiesPerPage),
-    [technologies.length, technologiesPerPage]
+    () => Math.ceil(skills.length / skillsPerPage),
+    [skills.length, skillsPerPage]
   );
 
   useEffect(() => {
-    const updatedActiveTechnology = technologies.find(
-      technology => technology === activeTechnology
-    );
-    setActiveTechnology(updatedActiveTechnology || technologies[0]);
+    const updatedActiveSkill = skills.find(skill => skill === activeSkill);
+    setActiveSkill(updatedActiveSkill || skills[0]);
   }, [t]);
 
-  useEffect(() => {
-    if (textRef.current) {
-      const element = textRef.current;
-      lastSingleLetterToNewLine(element);
-    }
-  }, [t, activeTechnology]);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  useLastSingleLetterToNewLine(textRef, activeSkill);
 
   const handlePageClick = (pageNumber: number): void => {
     setCurrentPage(pageNumber);
   };
 
-  const handleTechnologyClick = (technology: string): void => {
-    setActiveTechnology(technology);
+  const handleSkillClick = (technology: string): void => {
+    setActiveSkill(technology);
   };
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-  });
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => {
@@ -75,13 +63,13 @@ const Skills: React.FC = () => {
     <Flex
       as="section"
       id={t("skills.id") as string}
-      bg={`mode.${colorMode}.secondary`}
-      color={`mode.${colorMode}.text`}
       minH="100vh"
       pb={isDesktop ? 10 : 0}
       pt={isDesktop ? "10vh" : 0}
-      justifyContent="center"
       position="relative"
+      justifyContent="center"
+      bg={`mode.${colorMode}.secondary`}
+      color={`mode.${colorMode}.text`}
       _before={{
         content: '""',
         position: "absolute",
@@ -94,51 +82,51 @@ const Skills: React.FC = () => {
       }}
     >
       <Flex
-        flexDirection={isDesktop ? "row" : "column"}
         maxW="1100px"
-        zIndex={2}
         pb={10}
+        direction={isDesktop ? "row" : "column"}
+        zIndex={2}
       >
         <Flex
-          flexDirection="column"
-          justifyContent="center"
-          pt={isDesktop ? 0 : "14vh"}
-          px={5}
-          pb={isDesktop ? 20 : 10}
-          textAlign={isDesktop ? "left" : "center"}
           width={isDesktop ? "48%" : "100%"}
+          pt={isDesktop ? 0 : "14vh"}
+          pb={isDesktop ? 20 : 10}
+          px={5}
           position="relative"
+          direction="column"
+          justifyContent="center"
           bg={isDesktop ? "transparent" : `mode.${colorMode}.background`}
+          textAlign={isDesktop ? "left" : "center"}
         >
-          <DottedSquare
+          <DottedElement
             width="200px"
             height="160px"
-            left="-50%"
             top={isDesktop ? "0" : "-0px"}
+            left="-50%"
           />
           <Heading level="h3" mb={isDesktop ? 5 : 10}>
             {t("skills.heading")}
           </Heading>
           <Flex
-            flexDirection="column"
+            direction="column"
             fontSize="xl"
             fontFamily="secondary"
             textAlign="left"
           >
             <Text
               display="inline"
+              mb={5}
+              fontSize="xl"
               borderBottom="1px solid"
               borderBottomColor={`mode.${colorMode}.text`}
-              fontSize="xl"
-              mb={5}
             >
-              {t(`skills.${activeTechnology}.name`)}
+              {t(`skills.${activeSkill}.name`)}
             </Text>
             <Box ref={ref}>
               <Text
                 ref={textRef}
-                fontSize="md"
                 height={isDesktop ? "120px" : "unset"}
+                fontSize="md"
                 transform="translateY(50%)"
                 animation={
                   inView
@@ -146,7 +134,7 @@ const Skills: React.FC = () => {
                     : "none"
                 }
                 dangerouslySetInnerHTML={{
-                  __html: t(`skills.${activeTechnology}.description`) as string,
+                  __html: t(`skills.${activeSkill}.description`) as string,
                 }}
               />
             </Box>
@@ -154,23 +142,23 @@ const Skills: React.FC = () => {
         </Flex>
         <Flex
           width={isDesktop ? "50%" : "100%"}
-          px={2}
           pt={isDesktop ? 0 : 5}
-          justifyContent="space-around"
-          flexWrap="wrap"
+          px={2}
+          mt={isDesktop ? 5 : 0}
           ml={isDesktop ? 20 : 0}
           position="relative"
-          marginTop={isDesktop ? 5 : 0}
+          justifyContent="space-around"
+          flexWrap="wrap"
           {...swipeHandlers}
         >
-          {technologies
-            .slice(indexOfFirstTechnology, indexOfLastTechnology)
-            .map((technology: string, index: number) => (
+          {skills
+            .slice(indexOfFirstSkill, indexOfLastSkill)
+            .map((skill: string, index: number) => (
               <SkillCard
                 key={index}
-                technology={technology}
-                isActive={activeTechnology === technology}
-                onClick={() => handleTechnologyClick(technology)}
+                skill={skill}
+                isActive={activeSkill === skill}
+                onClick={() => handleSkillClick(skill)}
               />
             ))}
           <Flex w="100%" justifyContent="center">
