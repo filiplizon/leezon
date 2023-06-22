@@ -217,47 +217,66 @@
         "flNews": {
             "title": "FL News",
             "stack": "Next.js, TS, redux-toolkit, ant design, Rest API",
-            "description": "An application that allows users to browse news from different countries around the world."
+            "description": "An application that allows users to browse news from different countries around the world.",
+            "github": "https://github.com/filiplizon/gnNews",
+            "live": "https://github.com/filiplizon/gnNews",
+            "info": "Unfortunately, the external API used in this application only allows local usage. If you want to see how this application works, I encourage you to install it locally following the instructions provided on GitHub."
         },
         "dishesForm": {
             "title": "Dishes Form",
             "stack": "Next.js, TS, Tailwind.css, React-final-form",
-            "description": "The application allows users to create and submit dish information."
+            "description": "The application allows users to create and submit dish information.",
+            "github": "https://github.com/filiplizon/dishes-form",
+            "live": "https://dishes-form-beryl.vercel.app/"
         },
         "countryQuiz": {
             "title": "Country Quiz",
             "stack": "React, redux, firebase, Rest API",
-            "description": "An application with information about countries around the world. Users also can play a quiz."
+            "description": "An application with information about countries around the world. Users also can play a quiz.",
+            "github": "https://github.com/filiplizon/country-quiz",
+            "live": "https://country-quiz-leezon.netlify.app/"
         },
         "whatToDo": {
             "title": "What to do",
             "stack": "React, Recoil, Theme UI, Rest API",
-            "description": "A task management application. Users can add, delete or edit tasks."
+            "description": "A task management application. Users can add, delete or edit tasks.",
+            "github": "https://github.com/filiplizon/WHAT-TO-DO",
+            "live": "https://filiplizon.github.io/WHAT-TO-DO/"
         },
         "simpleEditor": {
             "title": "Simple Editor",
             "stack": "Node.js, Express.js, CSS, JavaScript, Pug",
-            "description": "Simple text editor with possibility to read and save data to JSON file."
+            "description": "Simple text editor with possibility to read and save data to JSON file.",
+            "github": "https://github.com/filiplizon/Simple-Editor",
+            "live": ""
         },
         "dayen": {
             "title": "Schoonmaakbedrijf Dayen",
             "stack": "HTML, SCSS, Javascript",
-            "description": "Landing page for dutch cleaning company."
+            "description": "Landing page for dutch cleaning company.",
+            "github": "https://github.com/filiplizon/Schoonmaakbedrijf-Dayen",
+            "live": "https://filiplizon.github.io/Schoonmaakbedrijf-Dayen/"
         },
         "sasinomierz": {
             "title": "Sasinomierz",
             "stack": "HTML, SCSS, Javascript",
-            "description": "A currency exchange application for exchanging a non-existent currency known as 'sasin'."
+            "description": "A currency exchange application for exchanging a non-existent currency known as 'sasin'.",
+            "github": "https://github.com/filiplizon/Sasinomierz",
+            "live": "https://filiplizon.github.io/Sasinomierz/"
         },
         "makeBurger": {
             "title": "Make a burger",
             "stack": "HTML, SCSS, Javascript",
-            "description": "A burger restaurant simulation application. Users can create and order burgers."
+            "description": "A burger restaurant simulation application. Users can create and order burgers.",
+            "github": "https://github.com/filiplizon/make-a-burger",
+            "live": "https://filiplizon.github.io/make-a-burger/"
         },
         "leezon": {
             "title": "Leezon",
             "stack": "Gatsby.js, Typescript, Chakra UI, Formik, i18n",
-            "description": "The portfolio landing page you are currently on."
+            "description": "The portfolio landing page you are currently on.",
+            "github": "https://github.com/filiplizon/leezon",
+            "live": "https://leezon.gatsbyjs.io/"
         }
     },
     "contact": {

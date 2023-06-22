@@ -17,6 +17,8 @@ const ProjectCard = ({ title }: { title: string }) => {
     triggerOnce: true,
   });
   const buttonWidth = "48%";
+  const hasNoLiveVersion =
+    t(`projects.${title}.live`) === t(`projects.${title}.github`);
 
   const textRef = useRef<HTMLDivElement>(null);
   useLastSingleLetterToNewLine(textRef);
@@ -99,16 +101,20 @@ const ProjectCard = ({ title }: { title: string }) => {
         <Flex width="100%" mt={5} justifyContent="space-between">
           <Button
             name={t("projects.buttons.live")}
-            href={t(`projects.${title}.liveURL`) as string}
+            href={t(`projects.${title}.live`) as string}
             isLink
+            disabled={hasNoLiveVersion}
             width={buttonWidth}
             py={2}
+            tooltipText={
+              hasNoLiveVersion ? (t(`projects.${title}.info`) as string) : ""
+            }
           >
             {t("projects.buttons.live")}
           </Button>
           <Button
             name={t("projects.buttons.github")}
-            href={t(`projects.${title}.githubURL`) as string}
+            href={t(`projects.${title}.github`) as string}
             isLink
             width={buttonWidth}
             py={2}

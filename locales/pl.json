@@ -217,47 +217,66 @@
         "flNews": {
             "title": "FL News",
             "stack": "Next.js, TS, redux-toolkit, ant design, Rest API",
-            "description": "Aplikacja umożliwiająca użytkownikom przeglądanie newsów z różnych krajów świata."
+            "description": "Aplikacja umożliwiająca użytkownikom przeglądanie newsów z różnych krajów świata.",
+            "github": "https://github.com/filiplizon/gnNews",
+            "live": "https://github.com/filiplizon/gnNews",
+            "info": "Niestety zewnętrzne API wykorzystane w tej aplikacji pozwala tylko na użycie lokalne, więc jeśli chcesz zobaczyć jak działa ta aplikacja, zachęcam Cię do zainstalowania jej lokalnie zgodnie z instrukcją podaną na githubie."
         },
         "dishesForm": {
             "title": "Dishes Form",
             "stack": "Next.js, TS, Tailwind.css, React-final-form",
-            "description": "Aplikacja umożliwia użytkownikom tworzenie i przesyłanie informacji o daniu."
+            "description": "Aplikacja umożliwia użytkownikom tworzenie i przesyłanie informacji o daniu.",
+            "github": "https://github.com/filiplizon/dishes-form",
+            "live": "https://dishes-form-beryl.vercel.app/"
         },
         "countryQuiz": {
             "title": "Country Quiz",
             "stack": "React, redux, firebase, Rest API",
-            "description": "Aplikacja dostarczająca użytkownikom informacje na temat państw świata z możliwością zagrania w quiz."
+            "description": "Aplikacja dostarczająca użytkownikom informacje na temat państw świata z możliwością zagrania w quiz.",
+            "github": "https://github.com/filiplizon/country-quiz",
+            "live": "https://country-quiz-leezon.netlify.app/"
         },
         "whatToDo": {
             "title": "What to do",
             "stack": "React, Recoil, Theme UI, Rest API",
-            "description": "Aplikacja do zarządzania zadaniami. Użytkownik może dodać, usunąć lub edytować zadania, a także zaznaczyć jako wykonane."
+            "description": "Aplikacja do zarządzania zadaniami. Użytkownik może dodać, usunąć lub edytować zadania, a także zaznaczyć jako wykonane.",
+            "github": "https://github.com/filiplizon/WHAT-TO-DO",
+            "live": "https://filiplizon.github.io/WHAT-TO-DO/"
         },
         "simpleEditor": {
             "title": "Simple Editor",
             "stack": "Node.js, Express.js, CSS, JavaScript, Pug",
-            "description": "Prosty edytor tekstu z możliwością odczytu i zapisu danych do pliku JSON."
+            "description": "Prosty edytor tekstu z możliwością odczytu i zapisu danych do pliku JSON.",
+            "github": "https://github.com/filiplizon/Simple-Editor",
+            "live": ""
         },
         "dayen": {
             "title": "Schoonmaakbedrijf Dayen",
             "stack": "HTML, SCSS, Javascript",
-            "description": "Strona wizytówka dla holenderskiej firmy sprzątającej."
+            "description": "Strona wizytówka dla holenderskiej firmy sprzątającej.",
+            "github": "https://github.com/filiplizon/Schoonmaakbedrijf-Dayen",
+            "live": "https://filiplizon.github.io/Schoonmaakbedrijf-Dayen/"
         },
         "sasinomierz": {
             "title": "Sasinomierz",
             "stack": "HTML, SCSS, Javascript",
-            "description": "Aplikacja do wymiany walut dla wymyślonej waluty o nazwie 'sasin'."
+            "description": "Aplikacja do wymiany walut dla wymyślonej waluty o nazwie 'sasin'.",
+            "github": "https://github.com/filiplizon/Sasinomierz",
+            "live": "https://filiplizon.github.io/Sasinomierz/"
         },
         "makeBurger": {
             "title": "Make a burger",
             "stack": "HTML, SCSS, Javascript",
-            "description": "Aplikacja symulująca działanie restauracji z burgerami. Użytkownik może stworzyć i zamówić burgera."
+            "description": "Aplikacja symulująca działanie restauracji z burgerami. Użytkownik może stworzyć i zamówić burgera.",
+            "github": "https://github.com/filiplizon/make-a-burger",
+            "live": "https://filiplizon.github.io/make-a-burger/"
         },
         "leezon": {
             "title": "Leezon",
             "stack": "Gatsby.js, Typescript, Chakra UI, Formik, i18n",
-            "description": "Strona portfolio na której się aktualnie znajdujesz."
+            "description": "Strona portfolio na której się aktualnie znajdujesz.",
+            "github": "https://github.com/filiplizon/leezon",
+            "live": "https://leezon.gatsbyjs.io/"
         }
     },
     "contact": {

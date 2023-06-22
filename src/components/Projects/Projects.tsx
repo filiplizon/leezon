@@ -14,7 +14,7 @@ const Projects: React.FC = () => {
   const [isDesktop] = useMediaQuery("(min-width: 821px)");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showMore, setShowMore] = useState<boolean>(false);
-  const projectsPerPage: number = isDesktop ? 3 : 4;
+  const projectsPerPage: number = 3;
   const totalPages: number = Math.ceil(projects.length / projectsPerPage);
   const maxDisplayedProjects: number = showMore
     ? projects.length

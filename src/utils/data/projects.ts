@@ -1,11 +1,11 @@
 export const projects = [
   "flNews",
-  "dishesForm",
   "countryQuiz",
-  "whatToDo",
-  "simpleEditor",
-  "dayen",
-  "sasinomierz",
-  "makeBurger",
   "leezon",
+  "dishesForm",
+  "makeBurger",
+  "dayen",
+  // "simpleEditor",
+  // "whatToDo",
+  // "sasinomierz",
 ];
