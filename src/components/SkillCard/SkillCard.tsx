@@ -44,6 +44,7 @@ const SkillCard = ({ skill, isActive, onClick }: SkillCardProps) => {
       textAlign="center"
       direction="column"
       alignItems="center"
+      justifyContent="center"
       bg={`mode.${colorMode}.background`}
       color={isActive ? `mode.${colorMode}.text` : `mode.${colorMode}.gray`}
       borderRadius={10}
