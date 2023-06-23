@@ -12,11 +12,11 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "GatsbyJS",
-        short_name: "GatsbyJS",
+        name: "Lezzon portfolio",
+        short_name: "Leezon",
         start_url: "/",
-        background_color: "#6b37bf",
-        theme_color: "#6b37bf",
+        background_color: "#FAFAFA",
+        theme_color: "#FAFAFA",
         display: "standalone",
         icon: "src/images/icon.png",
         crossOrigin: `use-credentials`,
@@ -32,7 +32,6 @@ const config: GatsbyConfig = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    "@chakra-ui/gatsby-plugin",
     {
       resolve: "@chakra-ui/gatsby-plugin",
       options: {

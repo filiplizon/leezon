@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18";
-import Home from "../components/Home/Home";
-import About from "../components/About/About";
-import Experience from "../components/Experience/Experience";
-import Skills from "../components/Skills/Skills";
-import Projects from "../components/Projects/Projects";
-import Contact from "../components/Contact/Contact";
+import Home from "../components/pages/Home/Home";
+import About from "../components/pages/About/About";
+import Experience from "../components/pages/Experience/Experience";
+import Skills from "../components/pages/Skills/Skills";
+import Projects from "../components/pages/Projects/Projects";
+import Contact from "../components/pages/Contact/Contact";
 
 const IndexPage = () => {
   return (

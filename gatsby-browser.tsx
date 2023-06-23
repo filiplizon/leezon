@@ -4,7 +4,7 @@ import { I18nextProvider } from "react-i18next";
 import i18n from "./i18";
 import theme from "./src/styles/theme";
 import "./src/styles/global.css";
-import Layout from "./src/components/Layout/Layout";
+import Layout from "./src/components/templates/Layout/Layout";
 
 export const wrapPageElement = ({ element }) => (
   <ChakraProvider resetCSS theme={theme}>
